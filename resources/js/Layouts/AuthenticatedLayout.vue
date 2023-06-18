@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from 'vue';
-import { Link } from '@inertiajs/vue3';
+import { ref, watch, onMounted } from 'vue';
+import {useStore} from 'vuex';
+import {Link, usePage} from '@inertiajs/vue3';
 import NavLink from "@/Components/NavLink.vue";
 import SideLink from "@/Components/SideLink.vue";
 const showSidebar = ref(false)
+const user = ref(usePage().props.auth.user)
 
 const openSidebar = () => {
     if(showSidebar.value)
@@ -21,6 +23,9 @@ window.addEventListener('resize', event =>{
         showSidebar.value = false
     }
 });
+
+const store = useStore();
+
 </script>
 
 <template>
@@ -37,7 +42,7 @@ window.addEventListener('resize', event =>{
                             <NavLink :href="route('profile.edit')">Профиль</NavLink>
                         </div>
                         <div >
-                            <NavLink class="leading-none" :href="route('logout')" method="post" as="button">Выйти</NavLink>
+                            <NavLink @click="$store.commit('logout');">Выйти</NavLink>
                         </div>
                     </div>
                     <div class="flex" v-else>
@@ -74,7 +79,7 @@ window.addEventListener('resize', event =>{
                                 <SideLink :href="route('profile.edit')">Профиль</SideLink>
                             </li>
                             <li v-if="$page.props.auth.user">
-                                <SideLink class="w-full text-left" :href="route('logout')" method="post" as="button">Выйти</SideLink>
+                                <SideLink @click="$store.commit('logout');">Выйти</SideLink>
                             </li>
                             <li v-if="!$page.props.auth.user">
                                 <SideLink :href="route('login')">Войти</SideLink>

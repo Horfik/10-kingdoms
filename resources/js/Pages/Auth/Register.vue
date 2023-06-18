@@ -5,6 +5,7 @@ import InputLabel from '@/Components/UI/InputLabel.vue';
 import PrimaryButton from '@/Components/UI/PrimaryButton.vue';
 import TextInput from '@/Components/UI/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import {useStore} from 'vuex';
 
 const form = useForm({
     name: '',
@@ -12,10 +13,16 @@ const form = useForm({
     password: '',
     password_confirmation: '',
 });
+const store = useStore();
 
 const submit = () => {
     form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+        onSuccess: (page) => {
+            store.commit('setMaster', page.props.auth.user)
+        },
+        onFinish: () => {
+            form.reset('password', 'password_confirmation')
+        },
     });
 };
 </script>
