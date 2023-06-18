@@ -3,7 +3,7 @@ import {useForm } from '@inertiajs/vue3';
 
 export default createStore({
     state: () => ({
-        master: false
+        master: localStorage.getItem('master')
     }),
     mutations: {
         setMaster(stage, user) {
@@ -15,7 +15,8 @@ export default createStore({
         },
         logout(stage) {
             const form = useForm({});
-            stage.master = false;
+            localStorage.removeItem('master')
+            stage.master = null;
             form.post(route('logout'));
         },
     }

@@ -27,6 +27,10 @@ const store = useStore();
 const submit = () => {
     form.post(route('login'), {
         onSuccess: (page) => {
+            if(page.props.auth.user.role)
+            {
+                localStorage.setItem('master', page.props.auth.user.role);
+            }
             store.commit('setMaster', page.props.auth.user)
         },
         onFinish: () => {
