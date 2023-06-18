@@ -6,14 +6,14 @@ import InputLabel from '@/Components/UI/InputLabel.vue';
 import TextInput from '@/Components/UI/TextInput.vue';
 import DescriptionText from '@/Components/UI/DescriptionText.vue';
 import SectionUI from "@/Components/UI/SectionUI.vue";
-import FileInput from "@/Components/UI/FileInput.vue";
+import InputFile from "@/Components/UI/InputFile.vue";
 import Dropzone from "dropzone";
 import {onMounted, ref} from 'vue';
 import {Head, Link, useForm, usePage, router} from '@inertiajs/vue3';
 const person = usePage().props.person;
 const form = useForm({
     name: person.name,
-    image: '',
+    image: null,
     biography: person.biography,
 });
 
@@ -66,7 +66,7 @@ const submit = () => {
                 </div>
                 <div class="mt-2">
                     <InputLabel for="image" value="Изображение"/>
-                    <FileInput name="image" id="image" v-model="form.image"/>
+                    <InputFile name="image" id="image" v-model="form.image"/>
                     <InputError :message="form.errors.image"/>
                 </div>
                 <div class="flex items-center justify-end mt-4">

@@ -52,14 +52,14 @@ const deletePerson = () => {
     form.delete(route('person.destroy', form.id), {
         preserveScroll: true,
         onSuccess: () => {
-            persons = persons.filter(person => person.id !== form.id);
+            persons.value = persons.value.filter(person => person.id !== form.id);
             closeModal()
         },
         onFinish: () => form.reset(),
     });
 }
 
-let persons = usePage().props.persons;
+const persons = ref(usePage().props.persons);
 
 onMounted(() => document.addEventListener('keydown', closeOnEscape));
 </script>
@@ -70,7 +70,7 @@ onMounted(() => document.addEventListener('keydown', closeOnEscape));
         <div class="text-right mb-4" v-if="master">
             <LinkButton  :href="route('person.create')">Добавить</LinkButton>
         </div>
-        <div class="bg-indigo-950 m-4 p-2 border border-gray-300 rounded-md" id="start-page">
+        <SectionUI id="start-page">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
             <div class="text-right mb-4" v-if="master">
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
@@ -78,7 +78,7 @@ onMounted(() => document.addEventListener('keydown', closeOnEscape));
             <div class="pl-4">
                 <ListPersons :persons="persons" :master="master" :confirmPersonDelete="confirmPersonDelete"/>
             </div>
-        </div>
+        </SectionUI>
 
         <SectionUI class="p-4" v-for="person in persons" :id="'show-' + person.id">
             <PersonItem :person="person" :openImage="openImage"/>
