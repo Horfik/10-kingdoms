@@ -18,17 +18,8 @@ class PersonController extends Controller
 {
     public function index():Response
     {
-        $master = false;
-        if(Auth::user())
-        {
-            if(Auth::user()->role === 'master')
-            {
-                $master = true;
-            }
-        }
         return Inertia::render('Person/Index',[
             'persons' => Person::query()->orderBy('name')->get(),
-            'master' => $master,
             'background' => asset('storage/person.jpg')
         ]);
     }

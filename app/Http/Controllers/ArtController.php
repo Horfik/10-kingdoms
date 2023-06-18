@@ -16,15 +16,7 @@ class ArtController extends Controller
     {
         $public = Art::query()->where('type', 1)->orderBy('name')->get();
         $dark = Art::query()->where('type', 2)->orderBy('name')->get();
-        $master = false;
 
-        if(Auth::user())
-        {
-            if(Auth::user()->role === 'master')
-            {
-                $master = true;
-            }
-        }
         $arts = [
             'public' => $public,
             'dark' => $dark,
@@ -32,7 +24,6 @@ class ArtController extends Controller
 
         return Inertia::render('Art/Index',[
             'arts' => $arts,
-            'master' => $master,
             'background' => asset('storage/710680.jpg')
         ]);
     }

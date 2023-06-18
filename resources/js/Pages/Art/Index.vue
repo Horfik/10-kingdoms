@@ -10,11 +10,6 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import SectionUI from "@/Components/UI/SectionUI.vue";
 import {Head, Link, usePage, useForm} from '@inertiajs/vue3';
 import { ref } from 'vue';
-defineProps({
-    master: {
-        type: Boolean,
-    },
-});
 
 const form = useForm({
     id: '',
@@ -51,14 +46,14 @@ const arts = usePage().props.arts;
     <AuthenticatedLayout>
         <SectionUI>
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Искусства</h1>
-            <div class="text-right" v-if="master">
+            <div class="text-right" v-if="$store.state.master">
                 <LinkButton  :href="route('art.create')">Добавить</LinkButton>
             </div>
             <div class="pl-4">
                 <div class="text-yellow-300 font-semibold text-2xl">Общая</div>
-                <ListArts :arts="arts.public" :master="master" :confirmArtDelete="confirmArtDelete"/>
+                <ListArts :arts="arts.public" :confirmArtDelete="confirmArtDelete"/>
                 <div class="text-yellow-300 font-semibold text-2xl">Темная Магия</div>
-                <ListArts :arts="arts.dark" :master="master" :confirmArtDelete="confirmArtDelete"/>
+                <ListArts :arts="arts.dark" :confirmArtDelete="confirmArtDelete"/>
             </div>
         </SectionUI>
         <div class="bg-indigo-950 m-4 border border-gray-300 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">

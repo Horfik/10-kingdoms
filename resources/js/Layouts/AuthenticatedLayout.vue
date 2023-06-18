@@ -41,8 +41,11 @@ const store = useStore();
                         <div>
                             <NavLink :href="route('profile.edit')">Профиль</NavLink>
                         </div>
-                        <div >
-                            <NavLink @click="$store.commit('logout');">Выйти</NavLink>
+                        <div class="">
+                            <div class="mr-4 text-yellow-300 font-semibold hover:border-b hover:border-gray-300" style="line-height: normal"
+                                 @click="$store.commit('logout');">
+                                Выйти
+                            </div>
                         </div>
                     </div>
                     <div class="flex" v-else>
@@ -79,7 +82,10 @@ const store = useStore();
                                 <SideLink :href="route('profile.edit')">Профиль</SideLink>
                             </li>
                             <li v-if="$page.props.auth.user">
-                                <SideLink @click="$store.commit('logout');">Выйти</SideLink>
+                                <div class="text-yellow-300 font-semibold w-full px-6 py-2 hover:bg-indigo-900"
+                                     @click="$store.commit('logout');">
+                                    Выйти
+                                </div>
                             </li>
                             <li v-if="!$page.props.auth.user">
                                 <SideLink :href="route('login')">Войти</SideLink>
@@ -89,9 +95,6 @@ const store = useStore();
                             </li>
                         </ul>
                     </div>
-
-
-
                 </div>
             </div>
         </nav>

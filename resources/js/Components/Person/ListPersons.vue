@@ -6,10 +6,6 @@ const props = defineProps({
         type: Array,
         required: true,
     },
-    master:{
-        type: Boolean,
-        required: true,
-    },
     confirmPersonDelete: {
         type: Function,
         required: true,
@@ -22,7 +18,7 @@ const props = defineProps({
         <div class="underline text-gray-200 text-xl font-bold ">
             <a :href="'#show-' + person.id">{{ person.name }}</a>
         </div>
-        <div  v-if="master">
+        <div  v-if="$store.state.master">
             <LinkButton  :href="route('person.edit', person.id)">редактировать</LinkButton>
             <DangerButton @click="confirmPersonDelete(person.id)">Удалить</DangerButton>
         </div>

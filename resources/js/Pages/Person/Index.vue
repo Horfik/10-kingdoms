@@ -4,17 +4,11 @@ import SectionUI from "@/Components/UI/SectionUI.vue";
 import LinkButton from "@/Components/UI/LinkButton.vue";
 import PersonItem from "@/Components/Person/PersonItem.vue";
 import ListPersons from "@/Components/Person/ListPersons.vue";
-import Person from "@/Components/Person/Person.vue";
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import Modal from '@/Components/Modal.vue';
 import {Head, usePage, useForm} from '@inertiajs/vue3';
 import {onMounted, ref} from 'vue';
-defineProps({
-    master: {
-        type: Boolean,
-    },
-});
 
 const form = useForm({
     id: ''
@@ -67,16 +61,13 @@ onMounted(() => document.addEventListener('keydown', closeOnEscape));
 <template>
     <Head title="Королвства"/>
     <AuthenticatedLayout>
-        <div class="text-right mb-4" v-if="master">
-            <LinkButton  :href="route('person.create')">Добавить</LinkButton>
-        </div>
         <SectionUI id="start-page">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
-            <div class="text-right mb-4" v-if="master">
+            <div class="text-right mb-4" v-if="$store.state.master">
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
             </div>
             <div class="pl-4">
-                <ListPersons :persons="persons" :master="master" :confirmPersonDelete="confirmPersonDelete"/>
+                <ListPersons :persons="persons" :confirmPersonDelete="confirmPersonDelete"/>
             </div>
         </SectionUI>
 

@@ -6,10 +6,6 @@ const props = defineProps({
         type: Array,
         required: true,
     },
-    master:{
-        type: Boolean,
-        required: true,
-    },
     confirmArtDelete: {
         type: Function,
         required: true,
