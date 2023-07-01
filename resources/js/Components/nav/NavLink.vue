@@ -11,7 +11,9 @@ const props = defineProps({
 </script>
 
 <template>
-    <Link :href="href" class="mr-4 text-yellow-300 font-semibold hover:bg-indigo-900">
-        <slot />
-    </Link>
+    <li class="hover:bg-indigo-900">
+        <Link :href="href" class="block px-3 py-3 text-yellow-300 font-semibold">
+            <slot />
+        </Link>
+    </li>
 </template>
