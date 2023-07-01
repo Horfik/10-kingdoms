@@ -19,7 +19,6 @@ const form = useForm({
 
 
 const submit = () => {
-    console.log(form)
     router.post(route('person.update', person.id),{
         _method: 'patch',
         name: form.name,
