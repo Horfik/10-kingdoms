@@ -45,14 +45,8 @@ Route::group(['prefix' => 'kingdom'], function(){
     Route::delete('/{kingdom}', [KingdomController::class, 'destroy'])->name('kingdom.destroy')->middleware(['auth', 'role']);
 });
 
-Route::group(['prefix' => 'person'], function(){
-    Route::get('/', [PersonController::class, 'index'])->name('person.index');
-    Route::get('/create', [PersonController::class, 'create'])->name('person.create')->middleware(['auth', 'role']);
-    Route::post('/', [PersonController::class, 'store'])->name('person.store')->middleware(['auth', 'role']);
-    Route::get('/{person}/edit', [PersonController::class, 'edit'])->name('person.edit')->middleware(['auth', 'role']);
-    Route::patch('/{person}', [PersonController::class, 'update'])->name('person.update')->middleware(['auth', 'role']);
-    Route::delete('/{person}', [PersonController::class, 'destroy'])->name('person.destroy')->middleware(['auth', 'role']);
-});
+Route::get('person/', [PersonController::class, 'index'])->name('person.index');
+
 
 
 
@@ -65,6 +59,21 @@ Route::middleware('auth')->group(function () {
         Route::get('/show', function () {
             return Inertia::render('Character/Show');
         })->name('character.show');
+    });
+});
+
+Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
+    Route::get('/', function(){
+        return Inertia::render("Admin/Index");
+    })->name('admin.index');
+
+    Route::prefix('person')->group(function(){
+        Route::get('/', App\Http\Controllers\Admin\PersonController::class)->name('admin.person.index');
+        Route::get('/create', [PersonController::class, 'create'])->name('person.create');
+        Route::post('/', [PersonController::class, 'store'])->name('person.store');
+        Route::get('/{person}/edit', [PersonController::class, 'edit'])->name('person.edit');
+        Route::patch('/{person}', [PersonController::class, 'update'])->name('person.update');
+        Route::delete('/{person}', [PersonController::class, 'destroy'])->name('person.destroy');
     });
 });
 

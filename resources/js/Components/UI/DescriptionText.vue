@@ -32,6 +32,6 @@ defineExpose({ focus: () => input.value.focus() });
         class="border-gray-300 bg-indigo-900 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"
-        @focus="contentHeight()"
+        @keyup="contentHeight()"
     >{{modelValue}}</textarea>
 </template>

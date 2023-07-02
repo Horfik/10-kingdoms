@@ -2,30 +2,40 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import SectionUI from "@/Components/UI/SectionUI.vue";
 import LinkButton from "@/Components/UI/LinkButton.vue";
-import PersonItem from "@/Components/Person/PersonItem.vue";
-import ListPersons from "@/Components/Person/ListPersons.vue";
-import SecondaryButton from '@/Components/SecondaryButton.vue';
+import SecondaryButton from "@/Components/SecondaryButton.vue"
 import DangerButton from '@/Components/DangerButton.vue';
+import PersonItem from "@/Components/Person/PersonItem.vue";
+import AdminMenu from "@/Components/Person/AdminMenu.vue";
+import ListPersons from "@/Components/Person/ListPersons.vue";
 import Modal from '@/Components/Modal.vue';
 import {Head, usePage, useForm} from '@inertiajs/vue3';
 import {onMounted, ref} from 'vue';
-
 const form = useForm({
     id: ''
 });
 
-const showAvatar = ref(false);
-const imageSrc = ref(false);
 
-const openImage = (image) =>{
-    imageSrc.value = image;
-    showAvatar.value = true;
+const confirmDelete = ref(false);
+
+const confirmPersonDelete = (id) => {
+    confirmDelete.value = true;
+    form.id = id;
 }
+const closeModal = () => {
+    confirmDelete.value = false;
 
-const closeImage = () => {
-    showAvatar.value = false;
+    form.reset();
+};
+const deletePerson = () => {
+    form.delete(route('person.destroy', form.id), {
+        preserveScroll: true,
+        onSuccess: () => {
+            persons.value = persons.value.filter(person => person.id !== form.id);
+            closeModal()
+        },
+        onFinish: () => form.reset(),
+    });
 }
-
 
 const persons = ref(usePage().props.persons);
 
@@ -36,16 +46,15 @@ const persons = ref(usePage().props.persons);
     <AuthenticatedLayout>
         <SectionUI id="start-page">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
-            <div class="text-right mb-4" v-if="$store.state.master">
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
-            </div>
             <div class="pl-4">
                 <ListPersons :persons="persons" :confirmPersonDelete="confirmPersonDelete"/>
             </div>
         </SectionUI>
 
         <SectionUI class="p-4" v-for="person in persons" :id="'show-' + person.id">
-            <PersonItem :person="person" :openImage="openImage"/>
+            <AdminMenu :id="person.id" :confirmPersonDelete="confirmPersonDelete"/>
+            <PersonItem :person="person"/>
         </SectionUI>
 
         <div class="fixed bottom-5 right-5 cursor-pointer ">
@@ -57,16 +66,25 @@ const persons = ref(usePage().props.persons);
                 </svg>
             </a>
         </div>
-        <div v-show="showAvatar" class="w-full cursor-pointer" @click="closeImage">
-            <div class="fixed w-full h-full top-0 left-0 inset-0 bg-gray-500 opacity-40" >
+        <Modal :show="confirmDelete" @close="closeModal">
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-300">
+                    Удалить персонажа?
+                </h2>
+                <div class="mt-6 flex justify-end">
+                    <SecondaryButton @click="closeModal"> Закрыть </SecondaryButton>
 
-            </div>
-            <div class="fixed top-0 left-0 bottom-0 right-0 m-10 ">
-                <div class="w-full h-full flex justify-center items-center">
-                    <img :src="imageSrc" alt="" id="full-image">
+                    <DangerButton
+                        class="ml-3"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                        @click="deletePerson"
+                    >
+                        Удалить
+                    </DangerButton>
                 </div>
             </div>
-        </div>
+        </Modal>
     </AuthenticatedLayout>
 </template>
 <style scoped>

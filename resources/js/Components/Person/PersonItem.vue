@@ -7,7 +7,7 @@ const props = defineProps({
     },
     openImage: {
         type: Function,
-        required: true,
+        required: false,
     },
 });
 </script>

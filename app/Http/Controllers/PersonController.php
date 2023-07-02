@@ -7,8 +7,6 @@ use App\Http\Requests\Person\UpdateRequest;
 use App\Models\Person;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -40,7 +38,7 @@ class PersonController extends Controller
             'image_path' => $pathImage,
             'image_url' => url('/storage/' . $pathImage),
         ]);
-        return Redirect::route('person.index');
+        return Redirect::route('admin.person.index');
     }
 
     public function edit(Person $person):Response
@@ -64,7 +62,7 @@ class PersonController extends Controller
         }
         unset($data['image']);
         $person->update($data);
-        return Redirect::route('person.index');
+        return Redirect::route('admin.person.index');
     }
 
     public function destroy(Person $person):RedirectResponse
@@ -72,6 +70,6 @@ class PersonController extends Controller
         Storage::disk('public')->delete($person->image_path);
         $person->delete();
 
-        return Redirect::route('person.index');
+        return Redirect::route('admin.person.index');
     }
 }
