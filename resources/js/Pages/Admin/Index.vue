@@ -8,7 +8,7 @@ import { Head, Link } from '@inertiajs/vue3';
     <AuthenticatedLayout>
         <SectionUI>
             <div>
-                <Link :href="route('kingdom.index')">Королевства</Link>
+                <Link :href="route('admin.kingdom.index')">Королевства</Link>
             </div>
             <div>
                 <Link :href="route('dashboard')">Организации</Link>

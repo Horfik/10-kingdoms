@@ -20,7 +20,7 @@ const kingdoms = usePage().props.kingdoms;
         </SectionUI>
 
         <SectionUI class="p-4" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
-            <Item :kingdom="kingdom"></Item>
+            <Item :kingdom="kingdom"/>
         </SectionUI>
         <div class="fixed bottom-5 right-5 cursor-pointer ">
             <a href="#start-page">

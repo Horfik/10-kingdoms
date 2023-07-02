@@ -32,17 +32,10 @@ Route::group(['prefix' => 'art'], function(){
 
 });
 
-Route::group(['prefix' => 'kingdom'], function(){
-    Route::get('/', [KingdomController::class, 'index'])->name('kingdom.index');
-    Route::get('/create', [KingdomController::class, 'create'])->name('kingdom.create')->middleware(['auth', 'role']);
-    Route::post('/', [KingdomController::class, 'store'])->name('kingdom.store')->middleware(['auth', 'role']);
-    Route::get('/{kingdom}/edit', [KingdomController::class, 'edit'])->name('kingdom.edit')->middleware(['auth', 'role']);
-    Route::patch('/{kingdom}', [KingdomController::class, 'update'])->name('kingdom.update')->middleware(['auth', 'role']);
-    Route::delete('/{kingdom}', [KingdomController::class, 'destroy'])->name('kingdom.destroy')->middleware(['auth', 'role']);
-});
 
 Route::get('person/', [PersonController::class, 'index'])->name('person.index');
-
+Route::get('art/', [ArtController::class, 'index'])->name('art.index');
+Route::get('kingdom/', [KingdomController::class, 'index'])->name('kingdom.index');
 
 
 
@@ -79,6 +72,15 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::get('/{art}/edit', [ArtController::class, 'edit'])->name('art.edit');
         Route::patch('/{art}', [ArtController::class, 'update'])->name('art.update');
         Route::delete('/{art}', [ArtController::class, 'destroy'])->name('art.destroy');
+    });
+
+    Route::prefix('kingdom')->group(function(){
+        Route::get('/', App\Http\Controllers\Admin\KingdomController::class)->name('admin.kingdom.index');
+        Route::get('/create', [KingdomController::class, 'create'])->name('kingdom.create');
+        Route::post('/', [KingdomController::class, 'store'])->name('kingdom.store');
+        Route::get('/{kingdom}/edit', [KingdomController::class, 'edit'])->name('kingdom.edit');
+        Route::patch('/{kingdom}', [KingdomController::class, 'update'])->name('kingdom.update');
+        Route::delete('/{kingdom}', [KingdomController::class, 'destroy'])->name('kingdom.destroy');
     });
 });
 

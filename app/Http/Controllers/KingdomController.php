@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Art\StoreRequest;
-use App\Models\Art;
+use App\Http\Requests\Kingdom\StoreRequest;
+use App\Http\Requests\Kingdom\UpdateRequest;
 use App\Models\Kingdom;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -23,34 +23,34 @@ class KingdomController extends Controller
 
     public function create():Response
     {
-        return Inertia::render('Art/Create');
+        return Inertia::render('Kingdom/Create');
     }
 
     public function store(StoreRequest $request):RedirectResponse
     {
         $data = $request->validated();
-        Art::create($data);
+        Kingdom::create($data);
 
-        return Redirect::route('art.index');
+        return Redirect::route('admin.kingdom.index');
     }
 
-    public function edit(Art $art): Response
+    public function edit(Kingdom $kingdom): Response
     {
-        return Inertia::render("Art/Edit", compact('art'));
+        return Inertia::render("Kingdom/Edit", compact('kingdom'));
     }
 
-    public function update(Art $art,StoreRequest $request): RedirectResponse
+    public function update(Kingdom $kingdom,UpdateRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $art->update($data);
+        $kingdom->update($data);
 
-        return Redirect::route('art.index');
+        return Redirect::route('admin.kingdom.index');
     }
 
-    public function destroy(Art $art): RedirectResponse
+    public function destroy(Kingdom $kingdom): RedirectResponse
     {
-        $art->delete();
+        $kingdom->delete();
 
-        return Redirect::route('art.index');
+        return Redirect::route('admin.kingdom.index');
     }
 }
