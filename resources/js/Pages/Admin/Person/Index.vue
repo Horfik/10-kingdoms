@@ -5,36 +5,16 @@ import LinkButton from "@/Components/UI/LinkButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue"
 import DangerButton from '@/Components/DangerButton.vue';
 import PersonItem from "@/Components/Person/PersonItem.vue";
-import AdminMenu from "@/Components/Person/AdminMenu.vue";
 import ListPersons from "@/Components/Person/ListPersons.vue";
 import Modal from '@/Components/Modal.vue';
-import {Head, usePage, useForm} from '@inertiajs/vue3';
-import {onMounted, ref} from 'vue';
-const form = useForm({
-    id: ''
-});
+import {Head, usePage} from '@inertiajs/vue3';
+import {ref} from 'vue';
+import {useStore} from "vuex";
+import ResourceMenu from "@/Components/Admin/ResourceMenu.vue";
+const store = useStore();
 
-
-const confirmDelete = ref(false);
-
-const confirmPersonDelete = (id) => {
-    confirmDelete.value = true;
-    form.id = id;
-}
-const closeModal = () => {
-    confirmDelete.value = false;
-
-    form.reset();
-};
-const deletePerson = () => {
-    form.delete(route('person.destroy', form.id), {
-        preserveScroll: true,
-        onSuccess: () => {
-            persons.value = persons.value.filter(person => person.id !== form.id);
-            closeModal()
-        },
-        onFinish: () => form.reset(),
-    });
+const filterPerson = () => {
+    persons.value = persons.value.filter(person => person.id !== store.state.deleteItem);
 }
 
 const persons = ref(usePage().props.persons);
@@ -46,14 +26,17 @@ const persons = ref(usePage().props.persons);
     <AuthenticatedLayout>
         <SectionUI id="start-page">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
+            <div class="text-right" >
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
+            </div>
+
             <div class="pl-4">
-                <ListPersons :persons="persons" :confirmPersonDelete="confirmPersonDelete"/>
+                <ListPersons :persons="persons"/>
             </div>
         </SectionUI>
 
         <SectionUI class="p-4" v-for="person in persons" :id="'show-' + person.id">
-            <AdminMenu :id="person.id" :confirmPersonDelete="confirmPersonDelete"/>
+            <ResourceMenu :id="person.id" :routeName="'person.edit'"/>
             <PersonItem :person="person"/>
         </SectionUI>
 
@@ -66,19 +49,17 @@ const persons = ref(usePage().props.persons);
                 </svg>
             </a>
         </div>
-        <Modal :show="confirmDelete" @close="closeModal">
+        <Modal :show="$store.state.deleteModal" @close="$store.commit('closeModal')">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-300">
                     Удалить персонажа?
                 </h2>
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Закрыть </SecondaryButton>
+                    <SecondaryButton @click="$store.commit('closeModal')"> Закрыть </SecondaryButton>
 
                     <DangerButton
                         class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deletePerson"
+                        @click="$store.dispatch('deleteItem', {routeName: 'person.destroy', callback: filterPerson})"
                     >
                         Удалить
                     </DangerButton>

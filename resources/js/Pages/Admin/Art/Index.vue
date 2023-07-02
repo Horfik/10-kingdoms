@@ -8,37 +8,17 @@ import DangerButton from '@/Components/DangerButton.vue';
 import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import SectionUI from "@/Components/UI/SectionUI.vue";
-import {Head, Link, usePage, useForm} from '@inertiajs/vue3';
-import { ref } from 'vue';
+import ResourceMenu from "@/Components/Admin/ResourceMenu.vue";
+import {Head, Link, usePage} from '@inertiajs/vue3';
+import {useStore} from "vuex";
 
-const form = useForm({
-    id: '',
-});
+const store = useStore()
 
-const confirmDelete = ref(false)
-
-const confirmArtDelete = (id) => {
-    confirmDelete.value = true;
-    form.id = id;
+const filterArt = () => {
+    arts.public = arts.public.filter(art => art.id !== store.state.deleteItem);
+    arts.dark = arts.dark.filter(art => art.id !== store.state.deleteItem);
 }
 
-const closeModal = () => {
-    confirmDelete.value = false;
-
-    form.reset();
-};
-
-const deleteArt = () => {
-    form.delete(route('art.destroy', form.id), {
-        preserveScroll: true,
-        onSuccess: () => {
-            arts.public = arts.public.filter(art => art.id !== form.id);
-            arts.dark = arts.dark.filter(art => art.id !== form.id);
-            closeModal()
-        },
-        onFinish: () => form.reset(),
-    });
-}
 const arts = usePage().props.arts;
 </script>
 <template>
@@ -46,23 +26,28 @@ const arts = usePage().props.arts;
     <AuthenticatedLayout>
         <SectionUI>
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Искусства</h1>
+            <div class="text-right" >
+                <LinkButton  :href="route('art.create')">Добавить</LinkButton>
+            </div>
             <div class="pl-4">
                 <div class="text-yellow-300 font-semibold text-2xl">Общая</div>
                 <ListArts :arts="arts.public"/>
                 <div class="text-yellow-300 font-semibold text-2xl">Темная Магия</div>
-                <ListArts :arts="arts.dark" />
+                <ListArts :arts="arts.dark"/>
             </div>
         </SectionUI>
         <div class="bg-indigo-950 m-4 border border-gray-300 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">
             Общая
         </div>
         <div v-for="art in arts.public" :id="'show-' + art.id" class="bg-indigo-950 text-gray-300 m-4 p-2 border border-gray-300 rounded-md p-6">
+            <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </div>
         <div class="bg-indigo-950 m-4 border border-gray-300 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">
             Темная Магия
         </div>
         <div v-for="art in arts.dark" :id="'show-' + art.id" class="bg-indigo-950 m-4 p-2 border text-gray-300 border-gray-300 rounded-md p-6">
+            <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </div>
 
@@ -75,19 +60,17 @@ const arts = usePage().props.arts;
                 </svg>
             </a>
         </div>
-        <Modal :show="confirmDelete" @close="closeModal">
+        <Modal :show="$store.state.deleteModal" @close="$store.commit('closeModal')">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-300">
                     Удалить исскуство?
                 </h2>
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Закрыть </SecondaryButton>
+                    <SecondaryButton @click="$store.commit('closeModal')"> Закрыть </SecondaryButton>
 
                     <DangerButton
                         class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deleteArt"
+                        @click="$store.dispatch('deleteItem', {routeName: 'art.destroy', callback: filterArt})"
                     >
                         Удалить
                     </DangerButton>

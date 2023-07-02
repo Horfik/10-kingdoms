@@ -11,7 +11,7 @@ import {Link} from '@inertiajs/vue3';
                 </NavLink>
                 <NavLink class="float-left" v-if="$page.props.auth.user" :href="route('character.show', 1)">Персонажи</NavLink>
                 <NavLink class="float-right" v-if="$page.props.auth.user" :href="route('profile.edit')">Профиль</NavLink>
-                <NavLink class="float-right" v-if="$page.props.auth.user" @click="$store.commit('logout');"> Выйти </NavLink>
+                <NavLink class="float-right" href="" v-if="$page.props.auth.user" @click="$store.commit('logout');"> Выйти </NavLink>
                 <NavLink class="float-right" v-if="!$page.props.auth.user" :href="route('login')">Войти</NavLink>
                 <NavLink class="float-right" v-if="!$page.props.auth.user" :href="route('register')">Регистрация</NavLink>
             </ul>

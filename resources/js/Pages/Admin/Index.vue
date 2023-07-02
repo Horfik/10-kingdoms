@@ -17,7 +17,7 @@ import { Head, Link } from '@inertiajs/vue3';
                 <Link :href="route('dashboard')">Расы</Link>
             </div>
             <div>
-                <Link :href="route('art.index')">Искусства</Link>
+                <Link :href="route('admin.art.index')">Искусства</Link>
             </div>
             <div>
                 <Link :href="route('admin.person.index')">Персонажи</Link>

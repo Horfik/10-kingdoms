@@ -29,11 +29,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'art'], function(){
     Route::get('/', [ArtController::class, 'index'])->name('art.index');
-    Route::get('/create', [ArtController::class, 'create'])->name('art.create')->middleware(['auth', 'role']);
-    Route::post('/', [ArtController::class, 'store'])->name('art.store')->middleware(['auth', 'role']);
-    Route::get('/{art}/edit', [ArtController::class, 'edit'])->name('art.edit')->middleware(['auth', 'role']);
-    Route::patch('/{art}', [ArtController::class, 'update'])->name('art.update')->middleware(['auth', 'role']);
-    Route::delete('/{art}', [ArtController::class, 'destroy'])->name('art.destroy')->middleware(['auth', 'role']);
+
 });
 
 Route::group(['prefix' => 'kingdom'], function(){
@@ -74,6 +70,15 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::get('/{person}/edit', [PersonController::class, 'edit'])->name('person.edit');
         Route::patch('/{person}', [PersonController::class, 'update'])->name('person.update');
         Route::delete('/{person}', [PersonController::class, 'destroy'])->name('person.destroy');
+    });
+
+    Route::prefix('art')->group(function(){
+        Route::get('/', App\Http\Controllers\Admin\ArtController::class)->name('admin.art.index');
+        Route::get('/create', [ArtController::class, 'create'])->name('art.create');
+        Route::post('/', [ArtController::class, 'store'])->name('art.store');
+        Route::get('/{art}/edit', [ArtController::class, 'edit'])->name('art.edit');
+        Route::patch('/{art}', [ArtController::class, 'update'])->name('art.update');
+        Route::delete('/{art}', [ArtController::class, 'destroy'])->name('art.destroy');
     });
 });
 

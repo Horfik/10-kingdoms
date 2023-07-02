@@ -36,11 +36,8 @@ const persons = ref(usePage().props.persons);
     <AuthenticatedLayout>
         <SectionUI id="start-page">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
-            <div class="text-right mb-4" v-if="$store.state.master">
-                <LinkButton  :href="route('person.create')">Добавить</LinkButton>
-            </div>
             <div class="pl-4">
-                <ListPersons :persons="persons" :confirmPersonDelete="confirmPersonDelete"/>
+                <ListPersons :persons="persons"/>
             </div>
         </SectionUI>
 
