@@ -4,8 +4,8 @@ import SectionUI from "@/Components/UI/SectionUI.vue";
 import LinkButton from "@/Components/UI/LinkButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue"
 import DangerButton from '@/Components/DangerButton.vue';
-import PersonItem from "@/Components/Person/PersonItem.vue";
-import ListPersons from "@/Components/Person/ListPersons.vue";
+import PersonItem from "@/Components/Resources/Person/PersonItem.vue";
+import ListPersons from "@/Components/Resources/Person/ListPersons.vue";
 import Modal from '@/Components/Modal.vue';
 import {Head, usePage} from '@inertiajs/vue3';
 import {ref} from 'vue';

@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import ArtItem from "@/Components/Art/ArtItem.vue";
-import ListArts from "@/Components/Art/ListArts.vue";
+import ArtItem from "@/Components/Resources/Art/ArtItem.vue";
+import ListArts from "@/Components/Resources/Art/ListArts.vue";
 import PrimaryButton from "@/Components/UI/PrimaryButton.vue";
 import LinkButton from "@/Components/UI/LinkButton.vue";
 import DangerButton from '@/Components/DangerButton.vue';

@@ -2,6 +2,8 @@
 import {Head, Link, usePage} from '@inertiajs/vue3';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import SectionUI from "@/Components/UI/SectionUI.vue";
+import Item from "@/Components/Resources/Kingdom/Item.vue";
+import List from "@/Components/Resources/Kingdom/List.vue";
 const kingdoms = usePage().props.kingdoms;
 
 
@@ -10,19 +12,25 @@ const kingdoms = usePage().props.kingdoms;
 <template>
     <Head title="Королвства"/>
     <AuthenticatedLayout>
-        <div class="bg-indigo-950 m-4 p-2 border border-gray-300 rounded-md" id="start-page">
+        <SectionUI id="start-page" class="p-4">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Королевства</h1>
-        </div>
-        <SectionUI v-for="kingdom in kingdoms">
-            <div>{{ kingdom.name }}</div>
-            <div>{{ kingdom.capital }}</div>
-            <div>{{ kingdom.ruler }}</div>
-            <div>{{ kingdom.population }}</div>
-            <div>{{ kingdom.attractions }}</div>
-            <div>{{ kingdom.emblem }}</div>
-            <div>{{ kingdom.description }}</div>
+            <div class="pl-2">
+                <List :kingdoms="kingdoms"/>
+            </div>
         </SectionUI>
 
+        <SectionUI class="p-4" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
+            <Item :kingdom="kingdom"></Item>
+        </SectionUI>
+        <div class="fixed bottom-5 right-5 cursor-pointer ">
+            <a href="#start-page">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor"
+                     class="w-10 h-10  text-yellow-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </a>
+        </div>
     </AuthenticatedLayout>
 </template>
 
