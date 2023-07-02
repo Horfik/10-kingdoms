@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Art\StoreRequest;
 use App\Models\Art;
+use App\Models\Kingdom;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -13,7 +14,9 @@ class KingdomController extends Controller
 {
     public function index():Response
     {
+        $kingdoms = Kingdom::all();
         return Inertia::render('Kingdom/Index',[
+            'kingdoms' => $kingdoms,
             'background' => asset('storage/kingdom.jpg')
         ]);
     }
