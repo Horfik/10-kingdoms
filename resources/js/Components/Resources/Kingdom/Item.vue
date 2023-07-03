@@ -25,7 +25,7 @@ const props = defineProps({
     <div class="mt-2 text-xl">
         <span class="font-bold text-yellow-300">Герб: </span>{{kingdom.emblem}}
     </div>
-    <div class="mt-2 text-xl">
+    <div class="mt-2 text-xl whitespace-pre-line">
         {{kingdom.description}}
     </div>
 

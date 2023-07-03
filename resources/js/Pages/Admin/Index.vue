@@ -11,7 +11,7 @@ import { Head, Link } from '@inertiajs/vue3';
                 <Link :href="route('admin.kingdom.index')">Королевства</Link>
             </div>
             <div>
-                <Link :href="route('dashboard')">Организации</Link>
+                <Link :href="route('admin.organization.index')">Организации</Link>
             </div>
             <div>
                 <Link :href="route('dashboard')">Расы</Link>

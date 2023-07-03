@@ -11,34 +11,6 @@ import SectionUI from "@/Components/UI/SectionUI.vue";
 import {Head, Link, usePage, useForm} from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-const form = useForm({
-    id: '',
-});
-
-const confirmDelete = ref(false)
-
-const confirmArtDelete = (id) => {
-    confirmDelete.value = true;
-    form.id = id;
-}
-
-const closeModal = () => {
-    confirmDelete.value = false;
-
-    form.reset();
-};
-
-const deleteArt = () => {
-    form.delete(route('art.destroy', form.id), {
-        preserveScroll: true,
-        onSuccess: () => {
-            arts.public = arts.public.filter(art => art.id !== form.id);
-            arts.dark = arts.dark.filter(art => art.id !== form.id);
-            closeModal()
-        },
-        onFinish: () => form.reset(),
-    });
-}
 const arts = usePage().props.arts;
 </script>
 <template>
@@ -75,24 +47,5 @@ const arts = usePage().props.arts;
                 </svg>
             </a>
         </div>
-        <Modal :show="confirmDelete" @close="closeModal">
-            <div class="p-6">
-                <h2 class="text-lg font-medium text-gray-300">
-                    Удалить исскуство?
-                </h2>
-                <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Закрыть </SecondaryButton>
-
-                    <DangerButton
-                        class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deleteArt"
-                    >
-                        Удалить
-                    </DangerButton>
-                </div>
-            </div>
-        </Modal>
     </AuthenticatedLayout>
 </template>

@@ -63,7 +63,7 @@ const arts = usePage().props.arts;
         <Modal :show="$store.state.deleteModal" @close="$store.commit('closeModal')">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-300">
-                    Удалить исскуство?
+                    Удалить искусство?
                 </h2>
                 <div class="mt-6 flex justify-end">
                     <SecondaryButton @click="$store.commit('closeModal')"> Закрыть </SecondaryButton>

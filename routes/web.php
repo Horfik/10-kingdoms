@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\ArtController;
 use App\Http\Controllers\KingdomController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::group(['prefix' => 'art'], function(){
 Route::get('person/', [PersonController::class, 'index'])->name('person.index');
 Route::get('art/', [ArtController::class, 'index'])->name('art.index');
 Route::get('kingdom/', [KingdomController::class, 'index'])->name('kingdom.index');
+Route::get('organization/', [OrganizationController::class, 'index'])->name('organization.index');
 
 
 
@@ -81,6 +83,15 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::get('/{kingdom}/edit', [KingdomController::class, 'edit'])->name('kingdom.edit');
         Route::patch('/{kingdom}', [KingdomController::class, 'update'])->name('kingdom.update');
         Route::delete('/{kingdom}', [KingdomController::class, 'destroy'])->name('kingdom.destroy');
+    });
+
+    Route::prefix('organization')->group(function(){
+        Route::get('/', App\Http\Controllers\Admin\OrganizationController::class)->name('admin.organization.index');
+        Route::get('/create', [OrganizationController::class, 'create'])->name('organization.create');
+        Route::post('/', [OrganizationController::class, 'store'])->name('organization.store');
+        Route::get('/{organization}/edit', [OrganizationController::class, 'edit'])->name('organization.edit');
+        Route::patch('/{organization}', [OrganizationController::class, 'update'])->name('organization.update');
+        Route::delete('/{organization}', [OrganizationController::class, 'destroy'])->name('organization.destroy');
     });
 });
 
