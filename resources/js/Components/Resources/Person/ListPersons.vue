@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 <template>
     <div v-for="person in persons" class="">
-        <div class="underline text-gray-200 text-xl font-bold ">
+        <div class="text-gray-300 p-1 text-xl font-bold cursor-pointer hover:bg-indigo-900">
             <a :href="'#show-' + person.id">{{ person.name }}</a>
         </div>
     </div>

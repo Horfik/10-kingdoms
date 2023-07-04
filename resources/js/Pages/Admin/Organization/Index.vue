@@ -26,7 +26,7 @@ console.log(organizations);
 <template>
     <Head title="Искусства"/>
     <AuthenticatedLayout>
-        <SectionUI class="pb-4">
+        <SectionUI class="p-6">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Организации</h1>
             <div class="text-right" >
                 <LinkButton :href="route('organization.create')">Добавить</LinkButton>
@@ -36,19 +36,19 @@ console.log(organizations);
             </div>
         </SectionUI>
 
-        <SectionUI class="text-center text-3xl font-semibold text-yellow-300">Разрешенные</SectionUI>
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Разрешенные</SectionUI>
         <SectionUI class="p-6" v-for="organization in organizations.legal" :id="'show-' + organization.id">
             <ResourceMenu :id="organization.id" :routeName="'organization.edit'"/>
             <Item :organization="organization"/>
         </SectionUI>
 
-        <SectionUI class="text-center text-3xl font-semibold text-yellow-300">Запрещенные</SectionUI>
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Запрещенные</SectionUI>
         <SectionUI class="p-6" v-for="organization in organizations.illegal" :id="'show-' + organization.id">
             <ResourceMenu :id="organization.id" :routeName="'organization.edit'"/>
             <Item :organization="organization"/>
         </SectionUI>
 
-        <SectionUI class="text-center text-3xl font-semibold text-yellow-300">Прочее</SectionUI>
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Прочее</SectionUI>
         <SectionUI class="p-6" v-for="organization in organizations.other" :id="'show-' + organization.id">
             <ResourceMenu :id="organization.id" :routeName="'organization.edit'"/>
             <Item :organization="organization"/>

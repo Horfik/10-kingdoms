@@ -24,29 +24,31 @@ const arts = usePage().props.arts;
 <template>
     <Head title="Искусства"/>
     <AuthenticatedLayout>
-        <SectionUI>
+        <SectionUI class="p-6">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Искусства</h1>
             <div class="text-right" >
                 <LinkButton  :href="route('art.create')">Добавить</LinkButton>
             </div>
-            <div class="pl-4">
-                <div class="text-yellow-300 font-semibold text-2xl">Общая</div>
+            <div class="text-yellow-300 font-semibold text-2xl mt-2 ">Общая</div>
+            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListArts :arts="arts.public"/>
-                <div class="text-yellow-300 font-semibold text-2xl">Темная Магия</div>
-                <ListArts :arts="arts.dark"/>
+            </div>
+            <div class="text-yellow-300 font-semibold text-2xl mt-2">Темная Магия</div>
+            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <ListArts :arts="arts.dark" />
             </div>
         </SectionUI>
-        <div class="bg-indigo-950 m-4 border border-gray-300 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">
+        <div class="bg-indigo-950 m-4 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">
             Общая
         </div>
-        <div v-for="art in arts.public" :id="'show-' + art.id" class="bg-indigo-950 text-gray-300 m-4 p-2 border border-gray-300 rounded-md p-6">
+        <div v-for="art in arts.public" :id="'show-' + art.id" class="bg-indigo-950 text-gray-300 m-4 rounded-md p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </div>
-        <div class="bg-indigo-950 m-4 border border-gray-300 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">
+        <div class="bg-indigo-950 m-4 rounded-md p-6 text-center text-3xl font-semibold text-yellow-300">
             Темная Магия
         </div>
-        <div v-for="art in arts.dark" :id="'show-' + art.id" class="bg-indigo-950 m-4 p-2 border text-gray-300 border-gray-300 rounded-md p-6">
+        <div v-for="art in arts.dark" :id="'show-' + art.id" class="bg-indigo-950 m-4 text-gray-300 rounded-md p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </div>

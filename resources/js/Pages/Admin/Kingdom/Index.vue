@@ -23,17 +23,17 @@ const kingdoms = ref(usePage().props.kingdoms);
 <template>
     <Head title="Королевства"/>
     <AuthenticatedLayout>
-        <SectionUI id="start-page">
+        <SectionUI id="start-page" class="p-6">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Королевства</h1>
             <div class="text-right" >
                 <LinkButton  :href="route('kingdom.create')">Добавить</LinkButton>
             </div>
-            <div class="pl-4">
+            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <List :kingdoms="kingdoms"/>
             </div>
         </SectionUI>
 
-        <SectionUI class="p-4" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
+        <SectionUI class="p-6" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
             <ResourceMenu :id="kingdom.id" :routeName="'kingdom.edit'"/>
             <Item :kingdom="kingdom"/>
         </SectionUI>

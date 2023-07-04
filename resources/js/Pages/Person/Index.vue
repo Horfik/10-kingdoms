@@ -34,14 +34,14 @@ const persons = ref(usePage().props.persons);
 <template>
     <Head title="Королвства"/>
     <AuthenticatedLayout>
-        <SectionUI id="start-page">
-            <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
-            <div class="pl-4">
+        <SectionUI class="p-6" id="start-page">
+            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Персонажи</h1>
+            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListPersons :persons="persons"/>
             </div>
         </SectionUI>
 
-        <SectionUI class="p-4" v-for="person in persons" :id="'show-' + person.id">
+        <SectionUI class="p-6" v-for="person in persons" :id="'show-' + person.id">
             <PersonItem :person="person" :openImage="openImage"/>
         </SectionUI>
 

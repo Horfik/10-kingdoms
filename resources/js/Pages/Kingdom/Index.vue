@@ -12,14 +12,14 @@ const kingdoms = usePage().props.kingdoms;
 <template>
     <Head title="Королвства"/>
     <AuthenticatedLayout>
-        <SectionUI id="start-page" class="p-4">
-            <h1 class="text-yellow-300 text-center font-bold text-2xl">Королевства</h1>
-            <div class="pl-2">
+        <SectionUI id="start-page" class="p-6">
+            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Королевства</h1>
+            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <List :kingdoms="kingdoms"/>
             </div>
         </SectionUI>
 
-        <SectionUI class="p-4" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
+        <SectionUI class="p-6" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
             <Item :kingdom="kingdom"/>
         </SectionUI>
         <div class="fixed bottom-5 right-5 cursor-pointer ">

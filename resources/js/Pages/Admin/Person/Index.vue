@@ -24,18 +24,18 @@ const persons = ref(usePage().props.persons);
 <template>
     <Head title="Королвства"/>
     <AuthenticatedLayout>
-        <SectionUI id="start-page">
-            <h1 class="text-yellow-300 text-center font-bold text-2xl">Персонажи</h1>
+        <SectionUI id="start-page" class="p-6">
+            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Персонажи</h1>
             <div class="text-right" >
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
             </div>
 
-            <div class="pl-4">
+            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListPersons :persons="persons"/>
             </div>
         </SectionUI>
 
-        <SectionUI class="p-4" v-for="person in persons" :id="'show-' + person.id">
+        <SectionUI class="p-6" v-for="person in persons" :id="'show-' + person.id">
             <ResourceMenu :id="person.id" :routeName="'person.edit'"/>
             <PersonItem :person="person"/>
         </SectionUI>

@@ -8,8 +8,8 @@ import EmblemPage from "@/Components/EmblemPage.vue";
 <template>
     <Head title="Главная"/>
     <AuthenticatedLayout>
-        <div class="bg-indigo-950 m-4 p-2  rounded-md">
-            <h1 class="text-yellow-300 font-bold text-2xl text-center">
+        <div class="bg-indigo-950 m-4 p-6  rounded-md">
+            <h1 class="text-yellow-300 font-bold text-2xl text-center mb-6">
                 Добро пожаловать в 10 королевств
             </h1>
 

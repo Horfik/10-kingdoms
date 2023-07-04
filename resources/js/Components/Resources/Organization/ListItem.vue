@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 <template>
     <div v-for="organization in organizations">
-        <div class="underline text-gray-200 text-xl font-bold ">
+        <div class="text-gray-300 p-1 text-xl font-bold cursor-pointer hover:bg-indigo-900 ">
             <a :href="'#show-' + organization.id">{{ organization.name }}</a>
         </div>
     </div>
