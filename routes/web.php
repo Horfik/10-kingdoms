@@ -8,6 +8,7 @@ use App\Http\Controllers\ArtController;
 use App\Http\Controllers\KingdomController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\RaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('person/', [PersonController::class, 'index'])->name('person.index');
 Route::get('art/', [ArtController::class, 'index'])->name('art.index');
 Route::get('kingdom/', [KingdomController::class, 'index'])->name('kingdom.index');
 Route::get('organization/', [OrganizationController::class, 'index'])->name('organization.index');
+Route::get('race/', [RaceController::class, 'index'])->name('race.index');
 
 
 
@@ -93,6 +95,16 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::patch('/{organization}', [OrganizationController::class, 'update'])->name('organization.update');
         Route::delete('/{organization}', [OrganizationController::class, 'destroy'])->name('organization.destroy');
     });
+
+    Route::prefix('race')->group(function(){
+        Route::get('/', App\Http\Controllers\Admin\RaceController::class)->name('admin.race.index');
+        Route::get('/create', [RaceController::class, 'create'])->name('race.create');
+        Route::post('/', [RaceController::class, 'store'])->name('race.store');
+        Route::get('/{race}/edit', [RaceController::class, 'edit'])->name('race.edit');
+        Route::patch('/{race}', [RaceController::class, 'update'])->name('race.update');
+        Route::delete('/{race}', [RaceController::class, 'destroy'])->name('race.destroy');
+    });
+
 });
 
 require __DIR__.'/auth.php';

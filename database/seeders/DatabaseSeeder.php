@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             ArtSeeder::class,
+            KingdomsSeeder::class,
+            OrganizationSeeder::class,
+            RaceSeeder::class,
         ]);
     }
 }
