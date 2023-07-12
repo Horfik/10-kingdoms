@@ -8,8 +8,8 @@ const props = defineProps({
 </script>
 <template>
     <div v-for="kingdom in kingdoms" class="">
-        <div class="text-gray-300 p-1 text-xl font-bold cursor-pointer hover:bg-indigo-900">
-            <a :href="'#show-' + kingdom.id">{{ kingdom.name }}</a>
+        <div class="text-gray-300 p-1 text-xl font-bold cursor-pointer hover:bg-indigo-900" @click="$store.dispatch('goto', kingdom.id)">
+            {{ kingdom.name }}
         </div>
     </div>
 </template>

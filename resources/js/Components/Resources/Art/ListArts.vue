@@ -9,8 +9,8 @@ const props = defineProps({
 </script>
 <template>
     <div v-for="art in arts">
-        <div class="text-gray-300 p-1 text-xl font-bold cursor-pointer hover:bg-indigo-900">
-            <a class="" :href="'#show-' + art.id">{{ art.name }}</a>
+        <div class="text-gray-300 p-1 text-xl font-bold cursor-pointer hover:bg-indigo-900" @click="$store.dispatch('goto', art.id)">
+            {{ art.name }}
         </div>
     </div>
 </template>

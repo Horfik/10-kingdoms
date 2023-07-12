@@ -29,8 +29,6 @@ export default createStore({
     },
     actions:{
         deleteItem(context, {routeName, callback} ){
-            /*console.log(context)
-            console.log(route, context.state.deleteItem)*/
             const form = useForm({});
             form.delete(route(routeName, context.state.deleteItem),{
                 onSuccess: ()=>{
@@ -39,5 +37,8 @@ export default createStore({
                 }
             });
         },
+        goto(context, id){
+            location.href = "#show-" + id;
+        }
     }
 })
