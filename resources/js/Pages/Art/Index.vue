@@ -2,11 +2,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import ArtItem from "@/Components/Resources/Art/ArtItem.vue";
 import ListArts from "@/Components/Resources/Art/ListArts.vue";
-import PrimaryButton from "@/Components/UI/PrimaryButton.vue";
-import LinkButton from "@/Components/UI/LinkButton.vue";
-import DangerButton from '@/Components/DangerButton.vue';
-import Modal from '@/Components/Modal.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
 import SectionUI from "@/Components/UI/SectionUI.vue";
 import {Head, Link, usePage, useForm} from '@inertiajs/vue3';
 import { ref } from 'vue';

@@ -9,6 +9,7 @@ use App\Http\Controllers\KingdomController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RaceController;
+use App\Http\Controllers\CharacterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,7 @@ Route::get('/', function () {
     return Inertia::render('Dashboard',['background' => asset('storage/main.jpg')]);
 })->name('dashboard');
 
-Route::group(['prefix' => 'art'], function(){
-    Route::get('/', [ArtController::class, 'index'])->name('art.index');
 
-});
 
 
 Route::get('person/', [PersonController::class, 'index'])->name('person.index');
@@ -48,10 +46,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::group(['prefix' => 'characters'], function(){
-        Route::get('/show', function () {
-            return Inertia::render('Character/Show');
-        })->name('character.show');
+    Route::group(['prefix' => 'character'], function(){
+        Route::get('/', [CharacterController::class , 'index'])->name('character.index');
+        Route::get('/create', [CharacterController::class , 'create'])->name('character.create');
+        Route::post('/', [CharacterController::class , 'store'])->name('character.store');
+        Route::get('/{character}', [CharacterController::class, 'show'])->name('character.show');
+        Route::patch('/{character}', [CharacterController::class, 'update'])->name('character.update');
     });
 });
 

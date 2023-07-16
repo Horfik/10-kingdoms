@@ -30,8 +30,8 @@ const submit = () => {
                 <div class="mt-2">
                     <InputLabel for="type" value="Тип" />
                     <SelectInput class="w-full" id="type" name="type" v-model="form.type">
-                        <option value="1">Играбельные</option>
-                        <option value="2">Не играбельные</option>
+                        <option value="1">доступные для игры</option>
+                        <option value="2">не доступные для игры</option>
                     </SelectInput>
                 </div>
                 <div class="mt-2">

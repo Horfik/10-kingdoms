@@ -1,5 +1,6 @@
 import {createStore} from "vuex";
 import {useForm } from '@inertiajs/vue3';
+import { character } from "./character";
 
 export default createStore({
     state: () => ({
@@ -40,5 +41,8 @@ export default createStore({
         goto(context, id){
             location.href = "#show-" + id;
         }
+    },
+    modules: {
+        character: character
     }
 })

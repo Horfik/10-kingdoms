@@ -54,7 +54,7 @@ window.addEventListener('resize', event =>{
             <div>
                 <ul>
                     <li v-if="$page.props.auth.user">
-                        <SideLink :href="route('character.show', 1)">Чарники</SideLink>
+                        <SideLink :href="route('character.index')">Чарники</SideLink>
                     </li>
                     <li v-if="$page.props.auth.user">
                         <SideLink :href="route('profile.edit')">Профиль</SideLink>
