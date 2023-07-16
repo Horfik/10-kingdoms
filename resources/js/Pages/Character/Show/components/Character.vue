@@ -3,7 +3,7 @@ import CharacterItem from '../UI/CharacterItem.vue';
 import Experience from '../UI/Experience.vue';
 </script>
 <template>
-    <div class="grid grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-2 gap-3 lg:grid-cols-3">
         <div class="">
             <CharacterItem title="Персонаж" :value="$store.state.character.name"/>
             <CharacterItem title="Игрок" :value="$store.state.character.player"/>

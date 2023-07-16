@@ -8,16 +8,14 @@ export const character = {
         },
         player: '',
         concept: '',
-        age: '',
-        experience: ''
+        age: 0,
+        experience: 0
     }),
     mutations: {
         setCharacter(state, character) {
-            console.log("setCharacter");
             state.id = character.id;
             state.name = character.name;
-            state.race.name = character.race.name;
-            state.race.talent = character.race.talent;
+            state.race = character.race;
             state.player = character.player;
             state.concept = character.concept;
             state.age = character.age;

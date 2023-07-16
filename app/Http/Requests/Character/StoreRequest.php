@@ -26,6 +26,8 @@ class StoreRequest extends FormRequest
             'race_id' => 'required',
             'concept' => 'required',
             'player' => 'required',
+            'age' => 'integer|nullable',
+            'experience' => 'integer|nullable',
         ];
     }
 }

@@ -59,13 +59,9 @@ class CharacterController extends Controller
         ]);
     }
 
-    public function update(Character $character, Request $request):Response
+    public function update(Character $character, StoreRequest $request):Response
     {
-
-        if($request->age)
-        {
-            $data['age'] = $request->age;
-        }
+        $data = $request->validated();
         $character->update($data);
         $resource = $character;
         $resource['race'] = $character->race;

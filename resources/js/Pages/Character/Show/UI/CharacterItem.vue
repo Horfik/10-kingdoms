@@ -10,8 +10,13 @@ const props = defineProps({
 })
 </script>
 <template>
-    <div>
-        <span class="font-bold">{{ title }}:</span> {{ value }}
+    <div class="flex gap-1 text-xl">
+        <div class="font-bold">
+            {{ title }}:
+        </div>
+        <div class="flex-1 border-b border-gray-900">
+            {{ value }}
+        </div>
     </div>
 </template>
 

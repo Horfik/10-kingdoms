@@ -2,8 +2,7 @@
 import {useForm} from "@inertiajs/vue3";
 import {ref} from "vue";
 import { useStore } from 'vuex';
-import Plus from "@/Components/svg/Plus.vue";
-import Minus from "@/Components/svg/Minus.vue";
+import CharacterMenu from "../components/CharacterMenu.vue"
 
 const showSidebar = ref(true);
 
@@ -28,28 +27,7 @@ window.addEventListener('resize', event =>{
     }
 });
 
-const store = useStore();
 
-const form = useForm({
-    age: store.state.character.age
-})
-
-const incrementAge = () => {
-    form.age = store.state.character.age + 1;
-    form.patch(route('character.update', store.state.character.id), {
-        onSuccess: responce=>{    
-            console.log(responce);
-            store.commit('setAge', responce.props.character.age);
-        },
-        onError: () => {
-            console.log("onError");
-        }
-    })
-}
-
-const incrementExperience = () => {
-    store.commit('setExperience', 5);    
-}
 
 </script>
 
@@ -65,46 +43,8 @@ const incrementExperience = () => {
                 </div>
             </div>
             <div class="p-2 pt-4">
-                <div class="font-bold">Общее</div>
-                <ul class="font-semibold select-none">
-                    <li class="cursor-pointer">
-                        Персонаж {{ $store.state.character.name }}
-                    </li>
-                    <li class="flex justify-between">
-                        <div>
-                            Раса: {{ $store.state.character.race.name }}
-                        </div>
-                    </li>
-                    <li class="flex justify-between">
-                        <div>
-                            Консепция: {{ $store.state.character.concept }}
-                        </div>
-                    </li>
-                    
-                    <li class="flex justify-between">
-                        <div>
-                            Опыт: {{ $store.state.character.experience }}
-                        </div>
-                        <div class="flex">
-                            <Plus class="mr-1 cursor-pointer" @click="incrementExperience"/>
-                            <Minus class="cursor-pointer"/>
-                        </div>
-                    </li>
-                    <li class="flex justify-between">
-                        <div>
-                            Возраст: {{ $store.state.character.age }}
-                        </div>
-                        <div class="flex">
-                            <Plus class="mr-1 cursor-pointer" @click="incrementAge"/>
-                            <Minus class="cursor-pointer"/>
-                        </div>
-                    </li>
-                    <li class="flex justify-between">
-                        <div>
-                            Богатство: {{ $store.state.character.money }}
-                        </div>
-                    </li>
-                </ul>
+                <CharacterMenu/>
+                
             </div>
         </div>
     </div>
