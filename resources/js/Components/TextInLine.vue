@@ -21,16 +21,12 @@ div{
     font-weight: bold;
     text-align: center;
 }
-span {
-    display: inline-block;
-    margin: 0 .4em;
-}
 span:before, span:after{
     content: '';
     position: absolute;
     width: 100%;
     border-top: 2px solid #4e4e4e;
-    margin-top: .6em;
+    margin-top: .8em;
 }
 span:before {
     margin-left: -102%;
