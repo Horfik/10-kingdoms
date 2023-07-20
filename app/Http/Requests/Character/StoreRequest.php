@@ -28,6 +28,7 @@ class StoreRequest extends FormRequest
             'player' => 'required',
             'age' => 'integer|nullable',
             'experience' => 'integer|nullable',
+            'money' => 'integer|nullable',
         ];
     }
 }

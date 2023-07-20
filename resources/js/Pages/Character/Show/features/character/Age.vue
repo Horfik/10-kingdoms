@@ -18,7 +18,7 @@ const emit = defineEmits(['update:modelValue']);
 <template>
 <li class="flex justify-between">
     <div>
-        Возраст: {{ $store.state.character.age }}
+        <span class="font-semibold">Возраст:</span> {{ $store.state.character.age }}
     </div>
     <div class="flex">
         <Minus class="cursor-pointer"  @click="$emit('update:modelValue', (modelValue - 1)); updateCharacter()"/>
