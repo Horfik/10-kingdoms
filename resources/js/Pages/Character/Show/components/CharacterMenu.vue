@@ -61,7 +61,7 @@ onMounted(
                     </div>
                 </li>
                 <Experience :updateCharacter="updateCharacter" v-model="form.experience" class="border-b border-gray-500 p-1"/>
-                <Age :updateCharacter="updateCharacter" v-model="form.age" class="border-b border-gray-500 p-1"/>
+                <Age :updateCharacter="updateCharacter" v-model="form.age"/>
                 <Money :updateCharacter="updateCharacter" v-model="form.money"/>
                 
             </ul>
