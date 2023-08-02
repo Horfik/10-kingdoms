@@ -6,43 +6,10 @@ import Attribute from '../UI/Attribute.vue';
 <template>
     <TextInLine>Атрибуты</TextInLine>
     <div class="grid gap-2 grid-cols-1 xl:grid-cols-3">
-        <div>
-            <h1 class="text-center font-bold text-xl">Социальные</h1>
-            <div>
-                <Attribute title="Харизма"/>
-                <Attribute title="Манипулирование"/>
-                <Attribute title="Проницательность"/>
-                <Attribute title="Обман"/>
-                <Attribute title="Храбрость"/>
-            </div>
-            <div>
-                some
-            </div>
-        </div>
-        <div>
-            <h1 class="text-center font-bold text-xl">Ментальные</h1>
-            <div>
-                <Attribute title="Внимание"/>
-                <Attribute title="Интеллект"/>
-                <Attribute title="Науки"/>
-                <Attribute title="Культура"/>
-                <Attribute title="Навыки"/>
-            </div>
-            <div>
-                some
-            </div>
-        </div>
-        <div>
-            <h1 class="text-center font-bold text-xl">Физические</h1>
-            <div>
-                <Attribute title="Телосложение"/>
-                <Attribute title="Защита"/>
-                <Attribute title="Ловкость"/>
-                <Attribute title="Нападение"/>
-                <Attribute title="Скрытность"/>
-            </div>
-            <div>
-                some
+        <div v-for="attribute in $store.state.character.attributes">
+            <h1 class="text-center font-bold text-xl">{{ attribute.name }}</h1>
+            <div v-for="attr in attribute.attr">
+                <Attribute :title="attr.name" :quality="attr.quality"/>
             </div>
         </div>
     </div>

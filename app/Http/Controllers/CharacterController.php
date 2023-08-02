@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Character\StoreRequest;
-use App\Http\Resources\CharacterResource;
 use App\Models\Character;
 use App\Models\Race;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Http\Services\CharacterService;
+use App\Models\Attribute;
 
-class CharacterController extends Controller
+class CharacterController extends CharacterService
 {
     public function index(Request $request):Response
     {
@@ -46,7 +46,10 @@ class CharacterController extends Controller
         $data['nightmare'] = 0;
         $data['chaos'] = 0;
         $data['reroll'] = 0;
-        Character::create($data);
+        
+        $character = Character::create($data);
+        $this->storeAttributes($character->id);
+
         return Redirect::route('character.index');
     }
 
@@ -54,8 +57,11 @@ class CharacterController extends Controller
     {
         $resource = $character;
         $resource['race'] = $character->race;
+        $attributes = Attribute::query()->where('character_id', $character->id)->get();
+        $attributes = $this->attributesResource($attributes);
         return Inertia::render('Character/Show/Show', [
             'character' => $resource,
+            'attributes' => $attributes,
         ]);
     }
 

@@ -9,7 +9,8 @@ export const character = {
         player: '',
         concept: '',
         age: 0,
-        experience: 0
+        experience: 0,
+        attributes: [],
     }),
     mutations: {
         setCharacter(state, character) {
@@ -22,12 +23,9 @@ export const character = {
             state.experience = character.experience;
             state.money = character.money;
         },
-        setAge(state, age) {
-            state.age = age;
+        setAttributes(state, attributes){
+            state.attributes = attributes;
         },
-        setExperience(state, experience){
-            state.experience = experience;
-        }
     },
     actions: {
         

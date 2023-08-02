@@ -1,7 +1,6 @@
 <script setup>
-import {useForm, Link} from "@inertiajs/vue3";
+import {Link} from "@inertiajs/vue3";
 import {ref} from "vue";
-import { useStore } from 'vuex';
 import CharacterMenu from "../components/CharacterMenu.vue"
 
 const showSidebar = ref(true);
@@ -52,6 +51,7 @@ window.addEventListener('resize', event =>{
             
             <div class="p-2 pt-4">
                 <CharacterMenu/>
+                
                 
             </div>
         </div>

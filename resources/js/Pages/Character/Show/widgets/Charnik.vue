@@ -6,10 +6,12 @@ import { useStore } from 'vuex';
 import { usePage } from '@inertiajs/vue3';
 
 const character = usePage().props.character;
+const attributes = usePage().props.attributes;
 const store = useStore();
 
 //store.commit('character/setCharacter', character);
 store.commit('setCharacter',character );
+store.commit('setAttributes', attributes);
 
 
 </script>
