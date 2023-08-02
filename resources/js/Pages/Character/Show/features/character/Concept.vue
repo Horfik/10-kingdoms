@@ -47,12 +47,12 @@ watch(
 <template>
 <li class="flex justify-between cursor-pointer border-b border-gray-500 p-1" @click="toggle">
     <div>
-        <span class="font-semibold">Возраст:</span> {{ $store.state.character.age }}
+        <span class="font-semibold">Консепция:</span> {{ $store.state.character.concept }}
     </div>
 </li>
 <Modal :show="show" @close="toggle">
     <div class="p-6 bg-gray-100">
-        <label for="money" class="text-gray-950 text-2xl font-bold">Возраст</label>
+        <label for="money" class="text-gray-950 text-2xl font-bold">Консепция</label>
         <input
             class="border border-gray-400 bg-gray-200 w-full p-2 block focus:border-gray-600 focus:ring-gray-600 rounded-md shadow-sm"
             :value="modelValue"
