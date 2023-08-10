@@ -23,15 +23,15 @@ const submit = () => {
 <template>
     <Head title="Добавить организацию"/>
     <AuthenticatedLayout>
-        <div class="bg-indigo-950 m-4 p-2 border border-gray-300 rounded-md">
-            <h1 class="text-center text-xl font-semibold text-yellow-300">Создать искусство</h1>
+        <div class="p-2 m-4 border border-gray-300 rounded-md bg-indigo-950">
+            <h1 class="text-xl font-semibold text-center text-yellow-300">Создать искусство</h1>
             <form @submit.prevent="submit">
                 <div class="mt-2">
                     <InputLabel for="type" value="Тип" />
                     <SelectInput class="w-full" id="type" name="type" v-model="form.type">
                         <option value="1">Разрешенные</option>
                         <option value="2">Запрещенные</option>
-                        <option value="2">Прочее</option>
+                        <option value="3">Неподтвержденные</option>
                     </SelectInput>
                 </div>
                 <div class="mt-2">
@@ -39,7 +39,7 @@ const submit = () => {
                     <TextInput
                         id="name"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         v-model="form.name"
                         required
                         autofocus
@@ -51,7 +51,7 @@ const submit = () => {
                     <DescriptionText
                         id="description"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         v-model="form.description"
                         required
                     />
