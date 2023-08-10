@@ -9,10 +9,10 @@ const races = usePage().props.races;
 </script>
 
 <template>
-    <Head title="Расы"/>
+    <Head title="Народы"/>
     <AuthenticatedLayout>
         <SectionUI class="p-6" id="start-page">
-            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Расы</h1>
+            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Народы</h1>
             <List :races="races"/>
         </SectionUI>
 

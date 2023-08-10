@@ -11,7 +11,7 @@ const organizations = usePage().props.organizations;
 console.log(organizations);
 </script>
 <template>
-    <Head title="Искусства"/>
+    <Head title="Организации"/>
     <AuthenticatedLayout>
         <SectionUI class="p-6">
             <h1 class="text-yellow-300 text-center font-bold text-2xl">Организации</h1>

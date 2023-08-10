@@ -32,10 +32,10 @@ const persons = ref(usePage().props.persons);
 </script>
 
 <template>
-    <Head title="Королвства"/>
+    <Head title="Личности"/>
     <AuthenticatedLayout>
         <SectionUI class="p-6" id="start-page">
-            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Персонажи</h1>
+            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Личности</h1>
             <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListPersons :persons="persons"/>
             </div>

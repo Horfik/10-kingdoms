@@ -22,10 +22,10 @@ const persons = ref(usePage().props.persons);
 </script>
 
 <template>
-    <Head title="Королвства"/>
+    <Head title="Личности"/>
     <AuthenticatedLayout>
         <SectionUI id="start-page" class="p-6">
-            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Персонажи</h1>
+            <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Личности</h1>
             <div class="text-right" >
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
             </div>

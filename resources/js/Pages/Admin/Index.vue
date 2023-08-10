@@ -14,13 +14,13 @@ import { Head, Link } from '@inertiajs/vue3';
                 <Link :href="route('admin.organization.index')">Организации</Link>
             </div>
             <div>
-                <Link :href="route('admin.race.index')">Расы</Link>
+                <Link :href="route('admin.race.index')">Народы</Link>
             </div>
             <div>
                 <Link :href="route('admin.art.index')">Искусства</Link>
             </div>
             <div>
-                <Link :href="route('admin.person.index')">Персонажи</Link>
+                <Link :href="route('admin.person.index')">Личности</Link>
             </div>
         </SectionUI>
     </AuthenticatedLayout>

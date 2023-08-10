@@ -16,9 +16,9 @@ import EmblemPage from "@/Components/EmblemPage.vue";
             <div class="flex flex-row justify-around flex-wrap gap-4 mt-4">
                 <EmblemPage :routeName="'kingdom.index'" :path="'/storage/images/emblems/kingdom.png'" :title="'Королевства'"/>
                 <EmblemPage :routeName="'organization.index'" :path="'/storage/images/emblems/dom.png'" :title="'Организации'"/>
-                <EmblemPage :routeName="'race.index'" :path="'/storage/images/emblems/fairy.png'" :title="'Расы'"/>
+                <EmblemPage :routeName="'race.index'" :path="'/storage/images/emblems/fairy.png'" :title="'Народы'"/>
                 <EmblemPage :routeName="'art.index'" :path="'/storage/images/emblems/magic.png'" :title="'Искусства'"/>
-                <EmblemPage :routeName="'person.index'" :path="'/storage/images/emblems/hood.png'" :title="'Персонажи'"/>
+                <EmblemPage :routeName="'person.index'" :path="'/storage/images/emblems/hood.png'" :title="'Личности'"/>
             </div>
         </div>
     </AuthenticatedLayout>
