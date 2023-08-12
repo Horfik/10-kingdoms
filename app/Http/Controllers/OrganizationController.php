@@ -22,13 +22,14 @@ class OrganizationController extends Controller
             'other' => $other,
         ];
         return Inertia::render('Organization/Index', [
-            "organizations" => $organizations
+            "organizations" => $organizations,
+            'background' => asset('storage/organizations.jpg')
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Organization/Create');
+        return Inertia::render('Organization/Create', ['background' => asset('storage/organizations.jpg')]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -40,7 +41,10 @@ class OrganizationController extends Controller
 
     public function edit(Organization $organization):Response
     {
-        return Inertia::render('Organization/Edit', compact("organization"));
+        return Inertia::render('Organization/Edit', [
+            "organization" => $organization,
+            'background' => asset('storage/organizations.jpg')
+        ]);
     }
 
     public function update(StoreRequest $request, Organization $organization):RedirectResponse

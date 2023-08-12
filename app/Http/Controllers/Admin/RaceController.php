@@ -19,7 +19,8 @@ class RaceController
             'notGame' => $notGame
         ];
         return Inertia::render('Admin/Race/Index', [
-            'races' => $races
+            'races' => $races,
+            'background' => asset('storage/races.jpg')
         ]);
     }
 }

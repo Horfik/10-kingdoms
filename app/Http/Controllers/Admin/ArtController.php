@@ -21,6 +21,7 @@ class ArtController
         ];
         return Inertia::render('Admin/Art/Index', [
             'arts' => $arts,
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 }

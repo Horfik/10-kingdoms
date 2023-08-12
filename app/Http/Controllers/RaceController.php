@@ -22,13 +22,14 @@ class RaceController extends Controller
             'notGame' => $notGame
         ];
         return Inertia::render('Race/Index', [
-            'races' => $races
+            'races' => $races,
+            'background' => asset('storage/races.jpg')
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Race/Create');
+        return Inertia::render('Race/Create', ['background' => asset('storage/races.jpg')]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -40,7 +41,10 @@ class RaceController extends Controller
 
     public function edit(Race $race):Response
     {
-        return Inertia::render('Race/Edit', ['race' => $race]);
+        return Inertia::render('Race/Edit', [
+            'race' => $race,
+            'background' => asset('storage/races.jpg')
+        ]);
     }
 
     public function update(StoreRequest $request, Race $race):RedirectResponse

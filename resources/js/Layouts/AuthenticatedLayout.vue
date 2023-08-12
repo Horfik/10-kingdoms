@@ -8,8 +8,8 @@ import Sidebar from "@/Components/nav/Sidebar.vue";
 </script>
 
 <template>
-    <div class="min-h-screen bg-indigo-900 text-gray-300" id="root" :style="'--src-img: url('+ $page.props.background + ')'">
-        <nav class="left-0 right-0 top-0 text-xl bg-indigo-950 ">
+    <div class="min-h-screen text-gray-300 bg-indigo-900" id="root" :style="'--src-img: url('+ $page.props.background + ')'">
+        <nav class="top-0 left-0 right-0 text-xl bg-indigo-950 ">
             <NavigateMenu/>
             <Sidebar/>
         </nav>
@@ -21,11 +21,11 @@ import Sidebar from "@/Components/nav/Sidebar.vue";
     </div>
 </template>
 <style>
-/*#root{
+#root{
     background-image: var(--src-img);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-}*/
+}
 </style>

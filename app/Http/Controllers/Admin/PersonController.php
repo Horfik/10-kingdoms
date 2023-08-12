@@ -14,7 +14,8 @@ class PersonController
     {
         $persons = Person::all();
         return Inertia::render('Admin/Person/Index', [
-            'persons' => $persons
+            'persons' => $persons,
+            'background' => asset('storage/persons.jpg')
         ]);
     }
 }

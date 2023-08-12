@@ -23,13 +23,13 @@ class ArtController extends Controller
 
         return Inertia::render('Art/Index',[
             'arts' => $arts,
-            'background' => asset('storage/710680.jpg')
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Art/Create', ['background' => asset('storage/710680.jpg')]);
+        return Inertia::render('Art/Create', ['background' => asset('storage/arts.jpg')]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -44,7 +44,7 @@ class ArtController extends Controller
     {
         return Inertia::render("Art/Edit", [
             'art' => $art,
-            'background' => asset('storage/710680.jpg')
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 

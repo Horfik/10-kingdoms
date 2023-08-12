@@ -21,7 +21,8 @@ class OrganizationController
             'other' => $other,
         ];
         return Inertia::render('Admin/Organization/Index', [
-            "organizations" => $organizations
+            "organizations" => $organizations,
+            'background' => asset('storage/organizations.jpg')
         ]);
     }
 }

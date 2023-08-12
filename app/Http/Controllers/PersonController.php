@@ -18,13 +18,13 @@ class PersonController extends Controller
     {
         return Inertia::render('Person/Index',[
             'persons' => Person::query()->orderBy('name')->get(),
-            'background' => asset('storage/person.jpg')
+            'background' => asset('storage/persons.jpg')
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Person/Create', ['background' => asset('storage/person.jpg')]);
+        return Inertia::render('Person/Create', ['background' => asset('storage/persons.jpg')]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -45,7 +45,7 @@ class PersonController extends Controller
     {
         return Inertia::render('Person/Edit', [
             'person' => $person,
-            'background' => asset('storage/person.jpg')
+            'background' => asset('storage/persons.jpg')
         ]);
     }
 

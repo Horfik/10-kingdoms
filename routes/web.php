@@ -47,11 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::group(['prefix' => 'character'], function(){
-        Route::get('/', [CharacterController::class , 'index'])->name('character.index');
-        Route::get('/create', [CharacterController::class , 'create'])->name('character.create');
-        Route::post('/', [CharacterController::class , 'store'])->name('character.store');
-        Route::get('/{character}', [CharacterController::class, 'show'])->name('character.show');
-        Route::patch('/{character}', [CharacterController::class, 'update'])->name('character.update');
+        Route::middleware('role')->get('/', [CharacterController::class , 'index'])->name('character.index');
+        Route::middleware('role')->get('/create', [CharacterController::class , 'create'])->name('character.create');
+        Route::middleware('role')->post('/', [CharacterController::class , 'store'])->name('character.store');
+        Route::middleware('role')->get('/{character}', [CharacterController::class, 'show'])->name('character.show');
+        Route::middleware('role')->patch('/{character}', [CharacterController::class, 'update'])->name('character.update');
     });
 });
 

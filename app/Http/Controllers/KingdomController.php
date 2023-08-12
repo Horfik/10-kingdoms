@@ -17,13 +17,13 @@ class KingdomController extends Controller
         $kingdoms = Kingdom::all();
         return Inertia::render('Kingdom/Index',[
             'kingdoms' => $kingdoms,
-            'background' => asset('storage/kingdom.jpg')
+            'background' => asset('storage/kingdoms.jpg')
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Kingdom/Create');
+        return Inertia::render('Kingdom/Create', ['background' => asset('storage/kingdoms.jpg')]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -36,7 +36,10 @@ class KingdomController extends Controller
 
     public function edit(Kingdom $kingdom): Response
     {
-        return Inertia::render("Kingdom/Edit", compact('kingdom'));
+        return Inertia::render("Kingdom/Edit", [
+            "kingdom" => $kingdom,
+            'background' => asset('storage/kingdoms.jpg')
+        ]);
     }
 
     public function update(Kingdom $kingdom,UpdateRequest $request): RedirectResponse
