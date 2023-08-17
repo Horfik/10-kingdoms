@@ -7,6 +7,7 @@ import DangerButton from '@/Components/DangerButton.vue';
 import {Head, usePage, useForm} from '@inertiajs/vue3';
 import List from "@/Components/Resources/Race/List.vue";
 import Item from "@/Components/Resources/Race/Item.vue";
+import ScrollUp from "@/Components/ScrollUp.vue";
 import ResourceMenu from "@/Components/Admin/ResourceMenu.vue";
 import Modal from '@/Components/Modal.vue';
 import {useStore} from "vuex";
@@ -45,6 +46,7 @@ const races = usePage().props.races;
             <ResourceMenu :id="race.id" :routeName="'race.edit'"/>
             <Item :race="race"/>
         </SectionUI>
+        <ScrollUp/>
         <Modal :show="$store.state.deleteModal" @close="$store.commit('closeModal')">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-300">

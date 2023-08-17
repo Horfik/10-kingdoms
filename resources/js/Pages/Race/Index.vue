@@ -4,6 +4,7 @@ import SectionUI from "@/Components/UI/SectionUI.vue";
 import {Head, usePage, useForm} from '@inertiajs/vue3';
 import List from "@/Components/Resources/Race/List.vue";
 import Item from "@/Components/Resources/Race/Item.vue";
+import ScrollUp from "@/Components/ScrollUp.vue";
 const races = usePage().props.races;
 
 </script>
@@ -25,6 +26,7 @@ const races = usePage().props.races;
         <SectionUI class="p-6" v-for="race in races.notGame" :id="'show-' + race.id">
             <Item :race="race"/>
         </SectionUI>
+        <ScrollUp/>
     </AuthenticatedLayout>
 </template>
 

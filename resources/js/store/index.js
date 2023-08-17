@@ -39,7 +39,7 @@ export default createStore({
             });
         },
         goto(context, id){
-            location.href = "#show-" + id;
+            document.getElementById('show-' + id).scrollIntoView();
         }
     },
     modules: {
