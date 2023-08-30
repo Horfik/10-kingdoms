@@ -28,12 +28,16 @@ class StoreRequest extends FormRequest
             'type' => ['required','integer'],
             'first_stage_name' => ['required','string'],
             'first_stage_description' => ['required','string'],
+            'first_stage_condition' => ['string', 'nullable'],
             'second_stage_name' => ['required','string'],
             'second_stage_description' => ['required','string'],
+            'second_stage_condition' => ['string', 'nullable'],
             'third_stage_name' => ['required','string'],
             'third_stage_description' => ['required','string'],
+            'third_stage_condition' => ['string', 'nullable'],
             'fourth_stage_name' => ['required','string'],
             'fourth_stage_description' => ['required','string'],
+            'fourth_stage_condition' => ['string', 'nullable'],
         ];
     }
 }

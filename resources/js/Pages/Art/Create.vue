@@ -15,12 +15,16 @@ const form = useForm({
     type: 1,
     first_stage_name: '',
     first_stage_description: '',
+    first_stage_condition: '',
     second_stage_name: '',
     second_stage_description: '',
+    second_stage_condition: '',
     third_stage_name: '',
     third_stage_description: '',
+    third_stage_condition: '',
     fourth_stage_name: '',
     fourth_stage_description: '',
+    fourth_stage_condition: '',
 });
 
 const submit = () => {
@@ -32,7 +36,7 @@ const submit = () => {
 <template>
     <Head title="Добавить Искусства"/>
     <AuthenticatedLayout>
-        <div class="bg-indigo-950 m-4 p-2 border border-gray-300 rounded-md">
+        <div class="bg-indigo-950 m-4 p-4  rounded-md">
             <h1 class="text-center text-xl font-semibold text-yellow-300">Создать искусство</h1>
             <form @submit.prevent="submit">
                 <div class="mt-2">
@@ -76,95 +80,155 @@ const submit = () => {
                     />
                     <InputError class="mt-2" :message="form.errors.attributes" />
                 </div>
-                <div class="mt-2">
-                    <InputLabel for="first_stage_name" value="Первая точка" />
-                    <TextInput
-                        id="first_stage_name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.first_stage_name"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.first_stage_name" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="first_stage_description" value="Первая точка описание" />
-                    <DescriptionText
-                        id="first_stage_description"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.first_stage_description"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.first_stage_description" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="second_stage_name" value="Вторая точка" />
-                    <TextInput
-                        id="second_stage_name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.second_stage_name"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.second_stage_name" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="second_stage_description" value="Вторая точка описание" />
-                    <DescriptionText
-                        id="second_stage_description"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.second_stage_description"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.second_stage_description" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="third_stage_name" value="Третья точка" />
-                    <TextInput
-                        id="third_stage_name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.third_stage_name"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.third_stage_name" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="third_stage_description" value="Третья точка описание" />
-                    <DescriptionText
-                        id="third_stage_description"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.third_stage_description"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.third_stage_description" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="fourth_stage_name" value="Четвертая точка" />
-                    <TextInput
-                        id="fourth_stage_name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.fourth_stage_name"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.fourth_stage_name" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="fourth_stage_description" value="Четвертая точка описание" />
-                    <DescriptionText
-                        id="fourth_stage_description"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.fourth_stage_description"
-                        required
-                    />
-                    <InputError class="mt-2" :message="form.errors.fourth_stage_description" />
-                </div>
 
+                <div class="mt-2">
+                    <p class="text-2xl text-yellow-300 font-bold">Первая точка</p>
+                    <div class="ml-6">
+                        <div class="mt-2">
+                            <InputLabel for="first_stage_name" value="Название" />
+                            <TextInput
+                                id="first_stage_name"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.first_stage_name"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.first_stage_name" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="first_stage_description" value="Описание" />
+                            <DescriptionText
+                                id="first_stage_description"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.first_stage_description"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.first_stage_description" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="first_stage_condition" value="Условие" />
+                            <DescriptionText
+                                id="first_stage_condition"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.first_stage_condition"
+                            />
+                            <InputError class="mt-2" :message="form.errors.first_stage_condition" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <p class="text-2xl text-yellow-300 font-bold">Вторая точка</p>
+                    <div class="ml-6">
+                        <div class="mt-2">
+                            <InputLabel for="second_stage_name" value="Название" />
+                            <TextInput
+                                id="second_stage_name"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.second_stage_name"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.second_stage_name" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="second_stage_description" value="Описание" />
+                            <DescriptionText
+                                id="second_stage_description"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.second_stage_description"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.second_stage_description" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="second_stage_condition" value="Условие" />
+                            <DescriptionText
+                                id="second_stage_condition"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.second_stage_condition"
+                            />
+                            <InputError class="mt-2" :message="form.errors.second_stage_condition" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <p class="text-2xl text-yellow-300 font-bold">Третья точка</p>
+                    <div class="ml-6">
+                        <div class="mt-2">
+                            <InputLabel for="third_stage_name" value="Название" />
+                            <TextInput
+                                id="third_stage_name"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.third_stage_name"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.third_stage_name" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="third_stage_description" value="Описание" />
+                            <DescriptionText
+                                id="third_stage_description"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.third_stage_description"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.third_stage_description" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="third_stage_condition" value="Условие" />
+                            <DescriptionText
+                                id="third_stage_condition"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.third_stage_condition"
+                            />
+                            <InputError class="mt-2" :message="form.errors.third_stage_condition" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <p class="text-2xl text-yellow-300 font-bold">Четвертая точка</p>
+                    <div class="ml-6">
+                        <div class="mt-2">
+                            <InputLabel for="fourth_stage_name" value="Название" />
+                            <TextInput
+                                id="fourth_stage_name"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.fourth_stage_name"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.fourth_stage_name" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="fourth_stage_description" value="Описание" />
+                            <DescriptionText
+                                id="fourth_stage_description"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.fourth_stage_description"
+                                required
+                            />
+                            <InputError class="mt-2" :message="form.errors.fourth_stage_description" />
+                        </div>
+                        <div class="mt-2">
+                            <InputLabel for="fourth_stage_condition" value="Условие" />
+                            <DescriptionText
+                                id="fourth_stage_condition"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.fourth_stage_condition"
+                            />
+                            <InputError class="mt-2" :message="form.errors.fourth_stage_condition" />
+                        </div>
+                    </div>
+                </div>
                 <div class="flex items-center justify-end mt-4">
                     <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Создать
