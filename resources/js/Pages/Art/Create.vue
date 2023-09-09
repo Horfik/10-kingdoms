@@ -36,14 +36,15 @@ const submit = () => {
 <template>
     <Head title="Добавить Искусства"/>
     <AuthenticatedLayout>
-        <div class="bg-indigo-950 m-4 p-4  rounded-md">
-            <h1 class="text-center text-xl font-semibold text-yellow-300">Создать искусство</h1>
+        <div class="p-4 m-4 rounded-md bg-indigo-950">
+            <h1 class="text-xl font-semibold text-center text-yellow-300">Создать искусство</h1>
             <form @submit.prevent="submit">
                 <div class="mt-2">
                     <InputLabel for="type" value="Тип" />
                     <SelectInput class="w-full" id="type" name="type" v-model="form.type">
                         <option value="1">общая</option>
                         <option value="2">темная магия</option>
+                        <option value="3">магия фейри</option>
                     </SelectInput>
                 </div>
                 <div class="mt-2">
@@ -51,7 +52,7 @@ const submit = () => {
                     <TextInput
                         id="name"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         v-model="form.name"
                         required
                         autofocus
@@ -63,7 +64,7 @@ const submit = () => {
                     <DescriptionText
                         id="description"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         v-model="form.description"
                         required
                     />
@@ -74,7 +75,7 @@ const submit = () => {
                     <TextInput
                         id="attributes"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         v-model="form.attributes"
                         required
                     />
@@ -82,14 +83,14 @@ const submit = () => {
                 </div>
 
                 <div class="mt-2">
-                    <p class="text-2xl text-yellow-300 font-bold">Первая точка</p>
+                    <p class="text-2xl font-bold text-yellow-300">Первая точка</p>
                     <div class="ml-6">
                         <div class="mt-2">
                             <InputLabel for="first_stage_name" value="Название" />
                             <TextInput
                                 id="first_stage_name"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.first_stage_name"
                                 required
                             />
@@ -100,7 +101,7 @@ const submit = () => {
                             <DescriptionText
                                 id="first_stage_description"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.first_stage_description"
                                 required
                             />
@@ -111,7 +112,7 @@ const submit = () => {
                             <DescriptionText
                                 id="first_stage_condition"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.first_stage_condition"
                             />
                             <InputError class="mt-2" :message="form.errors.first_stage_condition" />
@@ -119,14 +120,14 @@ const submit = () => {
                     </div>
                 </div>
                 <div class="mt-2">
-                    <p class="text-2xl text-yellow-300 font-bold">Вторая точка</p>
+                    <p class="text-2xl font-bold text-yellow-300">Вторая точка</p>
                     <div class="ml-6">
                         <div class="mt-2">
                             <InputLabel for="second_stage_name" value="Название" />
                             <TextInput
                                 id="second_stage_name"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.second_stage_name"
                                 required
                             />
@@ -137,7 +138,7 @@ const submit = () => {
                             <DescriptionText
                                 id="second_stage_description"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.second_stage_description"
                                 required
                             />
@@ -148,7 +149,7 @@ const submit = () => {
                             <DescriptionText
                                 id="second_stage_condition"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.second_stage_condition"
                             />
                             <InputError class="mt-2" :message="form.errors.second_stage_condition" />
@@ -156,14 +157,14 @@ const submit = () => {
                     </div>
                 </div>
                 <div class="mt-2">
-                    <p class="text-2xl text-yellow-300 font-bold">Третья точка</p>
+                    <p class="text-2xl font-bold text-yellow-300">Третья точка</p>
                     <div class="ml-6">
                         <div class="mt-2">
                             <InputLabel for="third_stage_name" value="Название" />
                             <TextInput
                                 id="third_stage_name"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.third_stage_name"
                                 required
                             />
@@ -174,7 +175,7 @@ const submit = () => {
                             <DescriptionText
                                 id="third_stage_description"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.third_stage_description"
                                 required
                             />
@@ -185,7 +186,7 @@ const submit = () => {
                             <DescriptionText
                                 id="third_stage_condition"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.third_stage_condition"
                             />
                             <InputError class="mt-2" :message="form.errors.third_stage_condition" />
@@ -193,14 +194,14 @@ const submit = () => {
                     </div>
                 </div>
                 <div class="mt-2">
-                    <p class="text-2xl text-yellow-300 font-bold">Четвертая точка</p>
+                    <p class="text-2xl font-bold text-yellow-300">Четвертая точка</p>
                     <div class="ml-6">
                         <div class="mt-2">
                             <InputLabel for="fourth_stage_name" value="Название" />
                             <TextInput
                                 id="fourth_stage_name"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.fourth_stage_name"
                                 required
                             />
@@ -211,7 +212,7 @@ const submit = () => {
                             <DescriptionText
                                 id="fourth_stage_description"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.fourth_stage_description"
                                 required
                             />
@@ -222,7 +223,7 @@ const submit = () => {
                             <DescriptionText
                                 id="fourth_stage_condition"
                                 type="text"
-                                class="mt-1 block w-full"
+                                class="block w-full mt-1"
                                 v-model="form.fourth_stage_condition"
                             />
                             <InputError class="mt-2" :message="form.errors.fourth_stage_condition" />
