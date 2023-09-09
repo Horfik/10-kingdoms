@@ -26,6 +26,10 @@ const races = usePage().props.races;
         <SectionUI class="p-6" v-for="race in races.notGame" :id="'show-' + race.id">
             <Item :race="race"/>
         </SectionUI>
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Фэйри</SectionUI>
+        <SectionUI class="p-6" v-for="race in races.fairy" :id="'show-' + race.id">
+            <Item :race="race"/>
+        </SectionUI>
         <ScrollUp/>
     </AuthenticatedLayout>
 </template>

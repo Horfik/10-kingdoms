@@ -15,6 +15,7 @@ import {useStore} from "vuex";
 const filterRace = () => {
     races.game = races.game.filter(race => race.id !== store.state.deleteItem);
     races.notGame = races.notGame.filter(race => race.id !== store.state.deleteItem);
+    races.fairy = races.fairy.filter(race => race.id !== store.state.deleteItem);
 }
 
 const store = useStore()
@@ -35,7 +36,7 @@ const races = usePage().props.races;
             <List :races="races"/>
         </SectionUI>
 
-        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">доступные для игры</SectionUI>
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Доступные для игры</SectionUI>
         <SectionUI class="p-6" v-for="race in races.game" :id="'show-' + race.id">
             <ResourceMenu :id="race.id" :routeName="'race.edit'"/>
             <Item :race="race"/>
@@ -46,6 +47,14 @@ const races = usePage().props.races;
             <ResourceMenu :id="race.id" :routeName="'race.edit'"/>
             <Item :race="race"/>
         </SectionUI>
+
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Фэйри</SectionUI>
+        <SectionUI class="p-6" v-for="race in races.fairy" :id="'show-' + race.id">
+            <ResourceMenu :id="race.id" :routeName="'race.edit'"/>
+            <Item :race="race"/>
+        </SectionUI>
+
+
         <ScrollUp/>
         <Modal :show="$store.state.deleteModal" @close="$store.commit('closeModal')">
             <div class="p-6">

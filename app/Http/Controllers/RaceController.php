@@ -17,9 +17,11 @@ class RaceController extends Controller
 
         $game = Race::query()->where('type', 1)->orderBy('name')->get();
         $notGame = Race::query()->where('type', 2)->orderBy('name')->get();
+        $fairy = Race::query()->where('type', 3)->orderBy('name')->get();
         $races = [
             'game' => $game,
-            'notGame' => $notGame
+            'notGame' => $notGame,
+            'fairy' => $fairy
         ];
         return Inertia::render('Race/Index', [
             'races' => $races,

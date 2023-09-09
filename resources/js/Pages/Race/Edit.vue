@@ -34,6 +34,7 @@ const submit = () => {
                     <SelectInput class="w-full" id="type" name="type" v-model="form.type">
                         <option value="1">доступные для игры</option>
                         <option value="2">не доступные для игры</option>
+                        <option value="3">Фэйри</option>
                     </SelectInput>
                 </div>
                 <div class="mt-2">
