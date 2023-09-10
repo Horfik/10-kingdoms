@@ -5,36 +5,25 @@ import InputError from '@/Components/UI/InputError.vue';
 import InputLabel from '@/Components/UI/InputLabel.vue';
 import TextInput from '@/Components/UI/TextInput.vue';
 import DescriptionText from '@/Components/UI/DescriptionText.vue';
-import SelectInput from '@/Components/UI/SelectInput.vue';
 
-import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
+import {Head, useForm} from '@inertiajs/vue3';
 const form = useForm({
     name: '',
     description: '',
-    talent: '',
-    type: 1,
 });
 
 const submit = () => {
-    form.post(route('race.store'));
+    form.post(route('mechanic.store'));
 };
 
 </script>
 
 <template>
-    <Head title="Добавить организацию"/>
+    <Head title="Добавить механику"/>
     <AuthenticatedLayout>
         <div class="p-2 m-4 border border-gray-300 rounded-md bg-indigo-950">
-            <h1 class="text-xl font-semibold text-center text-yellow-300">Создать расу</h1>
+            <h1 class="text-xl font-semibold text-center text-yellow-300">Создать механику</h1>
             <form @submit.prevent="submit">
-                <div class="mt-2">
-                    <InputLabel for="type" value="Тип" />
-                    <SelectInput class="w-full" id="type" name="type" v-model="form.type">
-                        <option value="1">доступные для игры</option>
-                        <option value="2">не доступные для игры</option>
-                        <option value="3">Фэйри</option>
-                    </SelectInput>
-                </div>
                 <div class="mt-2">
                     <InputLabel for="name" value="Название" />
                     <TextInput
@@ -57,16 +46,6 @@ const submit = () => {
                         required
                     />
                     <InputError class="mt-2" :message="form.errors.description" />
-                </div>
-                <div class="mt-2">
-                    <InputLabel for="talent" value="Право рождения" />
-                    <DescriptionText
-                        id="talent"
-                        type="text"
-                        class="block w-full mt-1"
-                        v-model="form.talent"
-                    />
-                    <InputError class="mt-2" :message="form.errors.talent" />
                 </div>
                 <div class="flex items-center justify-end mt-4">
                     <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

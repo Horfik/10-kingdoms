@@ -13,7 +13,6 @@ export default createStore({
             form.post(route('logout'));
         },
         openModal(state, deleteItem){
-            console.log(state, deleteItem)
             if(!state.deleteModal)
             {
                 state.deleteModal = true;

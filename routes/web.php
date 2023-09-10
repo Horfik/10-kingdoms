@@ -10,6 +10,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\MechanicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('art/', [ArtController::class, 'index'])->name('art.index');
 Route::get('kingdom/', [KingdomController::class, 'index'])->name('kingdom.index');
 Route::get('organization/', [OrganizationController::class, 'index'])->name('organization.index');
 Route::get('race/', [RaceController::class, 'index'])->name('race.index');
+Route::get('mechanic/', [MechanicController::class, 'index'])->name('mechanic.index');
 
 
 
@@ -103,6 +105,15 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::get('/{race}/edit', [RaceController::class, 'edit'])->name('race.edit');
         Route::patch('/{race}', [RaceController::class, 'update'])->name('race.update');
         Route::delete('/{race}', [RaceController::class, 'destroy'])->name('race.destroy');
+    });
+
+    Route::prefix('mechanic')->group(function(){
+        Route::get('/', App\Http\Controllers\Admin\MechanicController::class)->name('admin.mechanic.index');
+        Route::get('/create', [MechanicController::class, 'create'])->name('mechanic.create');
+        Route::post('/', [MechanicController::class, 'store'])->name('mechanic.store');
+        Route::get('/{mechanic}/edit', [MechanicController::class, 'edit'])->name('mechanic.edit');
+        Route::patch('/{mechanic}', [MechanicController::class, 'update'])->name('mechanic.update');
+        Route::delete('/{mechanic}', [MechanicController::class, 'destroy'])->name('mechanic.destroy');
     });
 
 });

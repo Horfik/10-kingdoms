@@ -23,7 +23,12 @@ window.addEventListener('resize', event =>{
 </script>
 
 <template>
-    <ul class="flex sm:hidden ">
+    <ul class="flex sm:hidden justify-between items-center px-4">
+        <div class="p-2 cursor-pointer">
+            <Link class="float-left" :href="route('dashboard')" >
+                <img class="inline-flex" src="/storage/images/emblems/10 logo.png" alt="" height="30" width="30">
+            </Link>
+        </div>
         <div class="p-2">
             <svg xmlns="http://www.w3.org/2000/svg" @click="openSidebar()" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor"
@@ -36,7 +41,7 @@ window.addEventListener('resize', event =>{
         <div @click="openSidebar" class="fixed inset-0 top-0 left-0 w-full h-full bg-gray-500 opacity-40">
 
         </div>
-        <div class="fixed top-0 left-0 h-full border-r border-gray-300 w-96 bg-indigo-950">
+        <div class="fixed top-0 left-0 right-0 pb-8 bg-indigo-950">
             <div class="flex items-center justify-between p-6 text-lg font-bold text-yellow-300 select-none">
                 <div>
                     <Link :href="route('dashboard')">
