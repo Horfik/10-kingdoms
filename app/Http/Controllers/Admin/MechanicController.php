@@ -14,7 +14,7 @@ class MechanicController extends Controller
         $mechanics = Mechanic::all();
         return Inertia::render('Admin/Mechanic/Index', [
             'mechanics' => $mechanics,
-            'background' => asset('storage/organizations.jpg')
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 }

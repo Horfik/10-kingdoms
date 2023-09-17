@@ -16,14 +16,14 @@ class MechanicController extends Controller
         $mechanics = Mechanic::all();
         return Inertia::render('Mechanic/Index', [
             'mechanics' => $mechanics,
-            'background' => asset('storage/organizations.jpg')
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 
     public function create ():Response
     {
         return Inertia::render('Mechanic/Create', [
-            'background' => asset('storage/organizations.jpg')
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 
@@ -38,7 +38,7 @@ class MechanicController extends Controller
     {
         return Inertia::render('Mechanic/Edit', [
             'mechanic' => $mechanic,
-            'background' => asset('storage/organizations.jpg')
+            'background' => asset('storage/arts.jpg')
         ]);
     }
 

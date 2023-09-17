@@ -10,6 +10,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MechanicController;
 
 /*
@@ -114,6 +115,11 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::get('/{mechanic}/edit', [MechanicController::class, 'edit'])->name('mechanic.edit');
         Route::patch('/{mechanic}', [MechanicController::class, 'update'])->name('mechanic.update');
         Route::delete('/{mechanic}', [MechanicController::class, 'destroy'])->name('mechanic.destroy');
+    });
+
+    Route::prefix('main')->group(function(){
+        Route::get('/{page}', [HomePageController::class, 'index'])->name('main.index');
+        Route::patch('/{page}', [HomePageController::class, 'update'])->name('main.update');
     });
 
 });
