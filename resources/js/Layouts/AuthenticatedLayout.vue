@@ -14,7 +14,7 @@ import Sidebar from "@/Components/nav/Sidebar.vue";
             <Sidebar/>
         </nav>
         <main class="flex justify-center">
-            <div class="w-full md:w-3/4 lg:w-4/6">
+            <div class="w-full md:w-3/4 lg:w-5/6">
                 <slot/>
             </div>
         </main>

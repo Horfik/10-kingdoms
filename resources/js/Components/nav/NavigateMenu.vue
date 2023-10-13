@@ -4,7 +4,7 @@ import {Link} from '@inertiajs/vue3';
 </script>
 <template>
     <div class="hidden w-full sm:flex sm:justify-center">
-        <div class="w-full px-6 md:w-3/4 lg:w-4/6">
+        <div class="w-full px-6 md:w-3/4 lg:w-5/6">
             <ul class="overflow-hidden ">
                 <NavLink class="float-left" :href="route('dashboard')" >
                     <img class="inline-flex" src="/storage/images/emblems/10 logo.png" alt="" height="30" width="30">
