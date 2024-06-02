@@ -117,11 +117,6 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         Route::delete('/{mechanic}', [MechanicController::class, 'destroy'])->name('mechanic.destroy');
     });
 
-    Route::prefix('main')->group(function(){
-        Route::get('/{page}', [HomePageController::class, 'index'])->name('main.index');
-        Route::patch('/{page}', [HomePageController::class, 'update'])->name('main.update');
-    });
-
 });
 
 require __DIR__.'/auth.php';

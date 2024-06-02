@@ -6,6 +6,7 @@ import SecondaryButton from "@/Components/SecondaryButton.vue"
 import DangerButton from '@/Components/DangerButton.vue';
 import PersonItem from "@/Components/Resources/Person/PersonItem.vue";
 import ListPersons from "@/Components/Resources/Person/ListPersons.vue";
+import PersonsListCards from "@/Components/Resources/Person/PersonsListCards.vue";
 import Modal from '@/Components/Modal.vue';
 import ScrollUp from "@/Components/ScrollUp.vue";
 import {Head, usePage} from '@inertiajs/vue3';
@@ -15,10 +16,14 @@ import ResourceMenu from "@/Components/Admin/ResourceMenu.vue";
 const store = useStore();
 
 const filterPerson = () => {
-    persons.value = persons.value.filter(person => person.id !== store.state.deleteItem);
+    for (let person in persons.value)
+    {
+        persons.value[person] = persons.value[person].filter(person => person.id !== store.state.deleteItem)
+    }
 }
 
 const persons = ref(usePage().props.persons);
+const homes = ref(usePage().props.homes);
 
 </script>
 
@@ -30,16 +35,12 @@ const persons = ref(usePage().props.persons);
             <div class="text-right" >
                 <LinkButton  :href="route('person.create')">Добавить</LinkButton>
             </div>
+            <ListPersons :persons="persons" :homes="homes"/>
 
-            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                <ListPersons :persons="persons"/>
-            </div>
         </SectionUI>
 
-        <SectionUI class="p-6" v-for="person in persons" :id="'show-' + person.id">
-            <ResourceMenu :id="person.id" :routeName="'person.edit'"/>
-            <PersonItem :person="person"/>
-        </SectionUI>
+        <PersonsListCards :persons="persons" :homes="homes" :admin="true"/>
+
 
         <ScrollUp/>
         <Modal :show="$store.state.deleteModal" @close="$store.commit('closeModal')">

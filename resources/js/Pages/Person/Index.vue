@@ -8,6 +8,7 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import Modal from '@/Components/Modal.vue';
 import ScrollUp from "@/Components/ScrollUp.vue";
+import PersonsListCards from "@/Components/Resources/Person/PersonsListCards.vue";
 import {Head, usePage, useForm} from '@inertiajs/vue3';
 import {onMounted, ref} from 'vue';
 
@@ -29,6 +30,7 @@ const closeImage = () => {
 
 
 const persons = ref(usePage().props.persons);
+const homes = ref(usePage().props.homes);
 
 </script>
 
@@ -37,15 +39,10 @@ const persons = ref(usePage().props.persons);
     <AuthenticatedLayout>
         <SectionUI class="p-6" id="start-page">
             <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Личности</h1>
-            <div class="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                <ListPersons :persons="persons"/>
-            </div>
+            <ListPersons :persons="persons" :homes="homes"/>
         </SectionUI>
 
-        <SectionUI class="p-6" v-for="person in persons" :id="'show-' + person.id">
-            <PersonItem :person="person" :openImage="openImage"/>
-        </SectionUI>
-
+        <PersonsListCards :persons="persons" :homes="homes" :openImage="openImage"/>
         <ScrollUp/>
         <div v-show="showAvatar" class="w-full cursor-pointer" @click="closeImage">
             <div class="fixed w-full h-full top-0 left-0 inset-0 bg-gray-500 opacity-40" >

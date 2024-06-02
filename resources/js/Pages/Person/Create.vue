@@ -7,11 +7,14 @@ import TextInput from '@/Components/UI/TextInput.vue';
 import DescriptionText from '@/Components/UI/DescriptionText.vue';
 import SectionUI from "@/Components/UI/SectionUI.vue";
 import InputFile from "@/Components/UI/InputFile.vue";
+import SelectInput from "@/Components/UI/SelectInput.vue";
 import Dropzone from "dropzone";
 import {onMounted, ref} from 'vue';
 import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
+const homes = usePage().props.homes;
 const form = useForm({
     name: '',
+    home: '',
     image: null,
     biography: '',
 });
@@ -53,6 +56,13 @@ const submit = () => {
                         class="mt-1 block w-full"
                     />
                     <InputError :message="form.errors.biography"/>
+                </div>
+                <div class="mt-2">
+                    <InputLabel for="home" value="Место обитания"/>
+                    <SelectInput name="home" class="w-full mt-1" v-model="form.home">
+                        <option v-for="(home, index) in homes" :value="index"> {{home}}</option>
+                    </SelectInput>
+                    <InputError :message="form.errors.home"/>
                 </div>
                 <div class="mt-2">
                     <InputLabel for="image" value="Изображение"/>

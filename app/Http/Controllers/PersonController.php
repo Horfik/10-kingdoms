@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Person\StoreRequest;
 use App\Http\Requests\Person\UpdateRequest;
+use App\Http\Services\Homes;
 use App\Models\Person;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -16,15 +17,28 @@ class PersonController extends Controller
 {
     public function index():Response
     {
+        $homes = Homes::$homes;
+        $persons = Person::query()->orderBy('name')->get();
+
+        $personsHomes = [];
+
+        foreach ($persons as $key => $person)
+        {
+            $personsHomes[$person['home']][] = $person;
+        }
         return Inertia::render('Person/Index',[
-            'persons' => Person::query()->orderBy('name')->get(),
+            'persons' => $personsHomes,
+            'homes' => $homes,
             'background' => asset('storage/persons.jpg')
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Person/Create', ['background' => asset('storage/persons.jpg')]);
+        return Inertia::render('Person/Create', [
+            'background' => asset('storage/persons.jpg'),
+            'homes' => Homes::$homes
+        ]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -34,6 +48,7 @@ class PersonController extends Controller
         $pathImage = Storage::disk('public')->putFileAs('/images/persons', $data['image'], $nameImage);
         Person::create([
             'name' => $data['name'],
+            'home' => $data['home'],
             'biography' => $data['biography'],
             'image_path' => $pathImage,
             'image_url' => url('/storage/' . $pathImage),
@@ -45,7 +60,8 @@ class PersonController extends Controller
     {
         return Inertia::render('Person/Edit', [
             'person' => $person,
-            'background' => asset('storage/persons.jpg')
+            'background' => asset('storage/persons.jpg'),
+            'homes' => Homes::$homes
         ]);
     }
 

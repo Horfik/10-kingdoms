@@ -11,7 +11,7 @@ const kingdoms = usePage().props.kingdoms;
 </script>
 
 <template>
-    <Head title="Королвства"/>
+    <Head title="Королевства"/>
     <AuthenticatedLayout>
         <SectionUI id="start-page" class="p-6">
             <h1 class="text-yellow-300 text-center font-bold text-2xl mb-4">Королевства</h1>

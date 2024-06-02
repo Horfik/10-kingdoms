@@ -6,13 +6,16 @@ import InputLabel from '@/Components/UI/InputLabel.vue';
 import TextInput from '@/Components/UI/TextInput.vue';
 import DescriptionText from '@/Components/UI/DescriptionText.vue';
 import SectionUI from "@/Components/UI/SectionUI.vue";
+import SelectInput from "@/Components/UI/SelectInput.vue";
 import InputFile from "@/Components/UI/InputFile.vue";
 import Dropzone from "dropzone";
 import {onMounted, ref} from 'vue';
 import {Head, Link, useForm, usePage, router} from '@inertiajs/vue3';
 const person = usePage().props.person;
+const homes = usePage().props.homes;
 const form = useForm({
     name: person.name,
+    home: person.home,
     image: null,
     biography: person.biography,
 });
@@ -22,6 +25,7 @@ const submit = () => {
     router.post(route('person.update', person.id),{
         _method: 'patch',
         name: form.name,
+        home: form.home,
         biography: form.biography,
         image: form.image
     });
@@ -34,7 +38,7 @@ const submit = () => {
     <AuthenticatedLayout>
         <SectionUI>
             <h1 class="text-xl text-yellow-300 text-center">
-                Добавить персонажа
+                Редактировать персонажа
             </h1>
             <form @submit.prevent="submit">
                 <div class="mt-2">
@@ -60,8 +64,12 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.biography"/>
                 </div>
-                <div>
-
+                <div class="mt-2">
+                    <InputLabel for="home" value="Место обитания"/>
+                    <SelectInput name="home" class="w-full mt-1" v-model="form.home">
+                        <option v-for="(home, index) in homes" :value="index"> {{home}}</option>
+                    </SelectInput>
+                    <InputError :message="form.errors.home"/>
                 </div>
                 <div class="mt-2">
                     <InputLabel for="image" value="Изображение"/>
