@@ -44,24 +44,24 @@ const arts = usePage().props.arts;
                 <ListArts :arts="arts.fairy" />
             </div>
         </SectionUI>
-        <SectionUI class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
+        <SectionUI class="p-6">
             Общая
         </SectionUI>
-        <SectionUI v-for="art in arts.public" :id="'show-' + art.id" class="p-6 m-4 text-gray-300 rounded-md bg-indigo-950">
+        <SectionUI v-for="art in arts.public" :id="'show-' + art.id" class="p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
+        <SectionUI class="p-6">
             Темная Магия
         </SectionUI>
-        <SectionUI v-for="art in arts.dark" :id="'show-' + art.id" class="p-6 m-4 text-gray-300 rounded-md bg-indigo-950">
+        <SectionUI v-for="art in arts.dark" :id="'show-' + art.id" class="p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
+        <SectionUI class="p-6">
             Магия фэйри
         </SectionUI>
-        <SectionUI v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6 m-4 text-gray-300 rounded-md bg-indigo-950">
+        <SectionUI v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </SectionUI>
