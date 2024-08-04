@@ -4,6 +4,7 @@ import SectionUI from "@/Components/UI/SectionUI.vue";
 import ListMechanics from '@/Components/Resources/Mecanic/ListMechanics.vue';
 import MechanicItem from '@/Components/Resources/Mecanic/MechanicItem.vue';
 import {Head, usePage} from '@inertiajs/vue3';
+import Menu from "@/Components/Menu.vue";
 import {ref} from 'vue';
 import ScrollUp from "@/Components/ScrollUp.vue";
 
@@ -22,6 +23,7 @@ const mechanics = ref(usePage().props.mechanics);
     <SectionUI class="p-6" v-for="mechanic in mechanics" :id="'show-' + mechanic.id">
         <MechanicItem :mechanic="mechanic"/>
     </SectionUI>
+    <Menu/>
     <ScrollUp/>
 </AuthenticatedLayout>
 </template>

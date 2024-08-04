@@ -23,7 +23,7 @@ class RaceController
         ];
         return Inertia::render('Admin/Race/Index', [
             'races' => $races,
-            'background' => asset('storage/races.jpg')
+            'background' => asset(\App\Http\Controllers\RaceController::backgroundPath)
         ]);
     }
 }

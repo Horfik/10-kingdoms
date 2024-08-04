@@ -40,11 +40,11 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-yellow-500">Delete Account</h2>
+            <h2 class="text-lg font-medium text-yellow-500">Удалить аккаунт</h2>
 
             <p class="mt-1 text-sm text-gray-300">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
-                your account, please download any data or information that you wish to retain.
+                После удаления вашей учетной записи все ее ресурсы и данные будут удалены без возможности восстановления.
+                Прежде чем удалять свою учетную запись, загрузите все данные или информацию, которую вы хотите сохранить.
             </p>
         </header>
 
@@ -53,12 +53,12 @@ const closeModal = () => {
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-300">
-                    Are you sure you want to delete your account?
+                    Вы уверены, что хотите удалить свою учетную запись?
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-300">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                    enter your password to confirm you would like to permanently delete your account.
+                    После удаления вашей учетной записи все ее ресурсы и данные будут удалены без возможности восстановления.
+                    Пожалуйста, введите свой пароль, чтобы подтвердить, что вы хотите навсегда удалить свою учетную запись.
                 </p>
 
                 <div class="mt-6">

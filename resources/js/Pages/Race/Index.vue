@@ -5,6 +5,7 @@ import {Head, usePage, useForm} from '@inertiajs/vue3';
 import List from "@/Components/Resources/Race/List.vue";
 import Item from "@/Components/Resources/Race/Item.vue";
 import ScrollUp from "@/Components/ScrollUp.vue";
+import Menu from "@/Components/Menu.vue";
 const races = usePage().props.races;
 
 </script>
@@ -30,6 +31,7 @@ const races = usePage().props.races;
         <SectionUI class="p-6" v-for="race in races.fairy" :id="'show-' + race.id">
             <Item :race="race"/>
         </SectionUI>
+        <Menu/>
         <ScrollUp/>
     </AuthenticatedLayout>
 </template>

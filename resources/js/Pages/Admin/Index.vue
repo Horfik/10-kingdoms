@@ -20,12 +20,9 @@ import { Head, Link } from '@inertiajs/vue3';
                 <Link :href="route('admin.art.index')">Искусства</Link>
             </div>
             <div>
-                <Link :href="route('admin.person.index')">Личности</Link>
-            </div>
-            <div>
                 <Link :href="route('admin.mechanic.index')">Механики</Link>
             </div>
-        
+
         </SectionUI>
     </AuthenticatedLayout>
 </template>

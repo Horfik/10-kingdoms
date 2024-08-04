@@ -17,13 +17,17 @@ const props = defineProps({
 </script>
 
 <template>
-    <Link :href="route(routeName)">
-        <div class="flex justify-center">
-            <div>
-                <img :src="path" alt="" height="100" width="100">
-                <p class="text-center">{{ title }}</p>
-            </div>
+    <div class="flex flex-col justify-center">
+        <div class="block mx-auto" :href="route(routeName)">
+            <Link class="block " :href="route(routeName)">
+                <img :src="path" alt="" :href="route(routeName)" height="50" width="50">
+            </Link>
         </div>
-    </Link>
+        <div>
+            <Link class="block " :href="route(routeName)">
+                {{ title }}
+            </Link>
+        </div>
+    </div>
 </template>
 

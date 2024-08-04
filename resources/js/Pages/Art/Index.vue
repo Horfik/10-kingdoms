@@ -4,6 +4,7 @@ import ArtItem from "@/Components/Resources/Art/ArtItem.vue";
 import ListArts from "@/Components/Resources/Art/ListArts.vue";
 import SectionUI from "@/Components/UI/SectionUI.vue";
 import ScrollUp from '@/Components/ScrollUp.vue';
+import Menu from "@/Components/Menu.vue";
 import {Head, Link, usePage, useForm} from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -30,25 +31,25 @@ const arts = usePage().props.arts;
 
         </SectionUI>
 
-        <div class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
+        <SectionUI class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
             Общая
-        </div>
-        <div v-for="art in arts.public" :id="'show-' + art.id" class="p-6 m-4 rounded-md bg-indigo-950">
+        </SectionUI>
+        <SectionUI v-for="art in arts.public" :id="'show-' + art.id" class="p-6 m-4 rounded-md bg-indigo-950">
             <ArtItem :art="art" />
-        </div>
-        <div class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
+        </SectionUI>
+        <SectionUI class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
             Темная Магия
-        </div>
-        <div v-for="art in arts.dark" :id="'show-' + art.id" class="p-6 m-4 rounded-md bg-indigo-950">
+        </SectionUI>
+        <SectionUI v-for="art in arts.dark" :id="'show-' + art.id" class="p-6 m-4 rounded-md bg-indigo-950">
             <ArtItem :art="art" />
-        </div>
-        <div class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
+        </SectionUI>
+        <SectionUI class="p-6 m-4 text-3xl font-semibold text-center text-yellow-300 rounded-md bg-indigo-950">
             Магия фэйри
-        </div>
-        <div v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6 m-4 rounded-md bg-indigo-950">
+        </SectionUI>
+        <SectionUI v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6 m-4 rounded-md bg-indigo-950">
             <ArtItem :art="art" />
-        </div>
-
+        </SectionUI>
+        <Menu/>
         <ScrollUp/>
     </AuthenticatedLayout>
 </template>

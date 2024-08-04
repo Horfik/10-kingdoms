@@ -5,6 +5,7 @@ import SectionUI from "@/Components/UI/SectionUI.vue";
 import Item from "@/Components/Resources/Kingdom/Item.vue";
 import List from "@/Components/Resources/Kingdom/List.vue";
 import ScrollUp from "@/Components/ScrollUp.vue";
+import Menu from "@/Components/Menu.vue";
 const kingdoms = usePage().props.kingdoms;
 
 
@@ -23,6 +24,7 @@ const kingdoms = usePage().props.kingdoms;
         <SectionUI class="p-6" v-for="kingdom in kingdoms" :id="'show-' + kingdom.id">
             <Item :kingdom="kingdom"/>
         </SectionUI>
+        <Menu/>
         <ScrollUp/>
     </AuthenticatedLayout>
 </template>

@@ -12,18 +12,21 @@ use Inertia\Response;
 
 class KingdomController extends Controller
 {
+    const backgroundPath = "storage/kingdoms.jpg";
     public function index():Response
     {
         $kingdoms = Kingdom::all();
         return Inertia::render('Kingdom/Index',[
             'kingdoms' => $kingdoms,
-            'background' => asset('storage/kingdoms.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Kingdom/Create', ['background' => asset('storage/kingdoms.jpg')]);
+        return Inertia::render('Kingdom/Create', [
+            'background' => asset(self::backgroundPath)
+        ]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -38,7 +41,7 @@ class KingdomController extends Controller
     {
         return Inertia::render("Kingdom/Edit", [
             "kingdom" => $kingdom,
-            'background' => asset('storage/kingdoms.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 

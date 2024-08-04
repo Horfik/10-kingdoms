@@ -29,7 +29,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
     <textarea
-        class="border-gray-300 bg-indigo-900 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+        class="border-gray-400 bg-gray-700 focus:border-gray-950 focus:ring-gray-950 rounded-md shadow-sm"
         @input="$emit('update:modelValue', $event.target.value)"
         ref="input"
         @keyup="contentHeight()"

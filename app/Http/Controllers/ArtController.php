@@ -11,6 +11,7 @@ use Inertia\Response;
 
 class ArtController extends Controller
 {
+    const backgroundPath = "storage/arts.webp";
     public function index():Response
     {
         $public = Art::query()->where('type', 1)->orderBy('name')->get();
@@ -25,13 +26,13 @@ class ArtController extends Controller
 
         return Inertia::render('Art/Index',[
             'arts' => $arts,
-            'background' => asset('storage/arts.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Art/Create', ['background' => asset('storage/arts.jpg')]);
+        return Inertia::render('Art/Create', ['background' => asset(self::backgroundPath)]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -46,7 +47,7 @@ class ArtController extends Controller
     {
         return Inertia::render("Art/Edit", [
             'art' => $art,
-            'background' => asset('storage/arts.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 

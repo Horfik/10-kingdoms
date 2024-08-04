@@ -11,19 +11,20 @@ use Inertia\Response;
 
 class MechanicController extends Controller
 {
+    const backgroundPath = "storage/mechanics.jpg";
     public function index():Response
     {
         $mechanics = Mechanic::all();
         return Inertia::render('Mechanic/Index', [
             'mechanics' => $mechanics,
-            'background' => asset('storage/arts.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
     public function create ():Response
     {
         return Inertia::render('Mechanic/Create', [
-            'background' => asset('storage/arts.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
@@ -38,7 +39,7 @@ class MechanicController extends Controller
     {
         return Inertia::render('Mechanic/Edit', [
             'mechanic' => $mechanic,
-            'background' => asset('storage/arts.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 

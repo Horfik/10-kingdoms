@@ -16,7 +16,7 @@ class KingdomController
         $kingdoms = Kingdom::all();
         return Inertia::render('Admin/Kingdom/Index', [
             'kingdoms' => $kingdoms,
-            'background' => asset('storage/kingdoms.jpg')
+            'background' => asset(\App\Http\Controllers\KingdomController::backgroundPath)
         ]);
     }
 }

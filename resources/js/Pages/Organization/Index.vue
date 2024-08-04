@@ -7,6 +7,7 @@ import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import ScrollUp from "@/Components/ScrollUp.vue";
 import SectionUI from "@/Components/UI/SectionUI.vue";
+import Menu from "@/Components/Menu.vue";
 import {Head, Link, usePage, useForm} from '@inertiajs/vue3';
 const organizations = usePage().props.organizations;
 console.log(organizations);
@@ -35,7 +36,7 @@ console.log(organizations);
         <SectionUI class="p-6" v-for="organization in organizations.other" :id="'show-' + organization.id">
             <Item :organization="organization"/>
         </SectionUI>
-
+        <Menu/>
 
         <ScrollUp/>
     </AuthenticatedLayout>

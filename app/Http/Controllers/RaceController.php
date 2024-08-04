@@ -12,6 +12,7 @@ use App\Models\Race;
 
 class RaceController extends Controller
 {
+    const backgroundPath = "storage/races.jpg";
     public function index():Response
     {
 
@@ -25,13 +26,13 @@ class RaceController extends Controller
         ];
         return Inertia::render('Race/Index', [
             'races' => $races,
-            'background' => asset('storage/races.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Race/Create', ['background' => asset('storage/races.jpg')]);
+        return Inertia::render('Race/Create', ['background' => asset(self::backgroundPath)]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -45,7 +46,7 @@ class RaceController extends Controller
     {
         return Inertia::render('Race/Edit', [
             'race' => $race,
-            'background' => asset('storage/races.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 

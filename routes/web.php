@@ -35,7 +35,7 @@ Route::get('/', function () {
 
 
 
-Route::get('person/', [PersonController::class, 'index'])->name('person.index');
+//Route::get('person/', [PersonController::class, 'index'])->name('person.index');
 Route::get('art/', [ArtController::class, 'index'])->name('art.index');
 Route::get('kingdom/', [KingdomController::class, 'index'])->name('kingdom.index');
 Route::get('organization/', [OrganizationController::class, 'index'])->name('organization.index');
@@ -63,14 +63,14 @@ Route::middleware(['auth', 'role'])->prefix('admin')->group(function () {
         return Inertia::render("Admin/Index");
     })->name('admin.index');
 
-    Route::prefix('person')->group(function(){
+    /*Route::prefix('person')->group(function(){
         Route::get('/', App\Http\Controllers\Admin\PersonController::class)->name('admin.person.index');
         Route::get('/create', [PersonController::class, 'create'])->name('person.create');
         Route::post('/', [PersonController::class, 'store'])->name('person.store');
         Route::get('/{person}/edit', [PersonController::class, 'edit'])->name('person.edit');
         Route::patch('/{person}', [PersonController::class, 'update'])->name('person.update');
         Route::delete('/{person}', [PersonController::class, 'destroy'])->name('person.destroy');
-    });
+    });*/
 
     Route::prefix('art')->group(function(){
         Route::get('/', App\Http\Controllers\Admin\ArtController::class)->name('admin.art.index');

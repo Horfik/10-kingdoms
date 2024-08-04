@@ -11,6 +11,7 @@ use Inertia\Response;
 
 class OrganizationController extends Controller
 {
+    const backgroundPath = "storage/organizations.jpg";
     public function index():Response
     {
         $legal = Organization::query()->where("type", 1)->get();
@@ -23,13 +24,13 @@ class OrganizationController extends Controller
         ];
         return Inertia::render('Organization/Index', [
             "organizations" => $organizations,
-            'background' => asset('storage/organizations.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
     public function create():Response
     {
-        return Inertia::render('Organization/Create', ['background' => asset('storage/organizations.jpg')]);
+        return Inertia::render('Organization/Create', ['background' => asset(self::backgroundPath)]);
     }
 
     public function store(StoreRequest $request):RedirectResponse
@@ -43,7 +44,7 @@ class OrganizationController extends Controller
     {
         return Inertia::render('Organization/Edit', [
             "organization" => $organization,
-            'background' => asset('storage/organizations.jpg')
+            'background' => asset(self::backgroundPath)
         ]);
     }
 
