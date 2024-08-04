@@ -42,7 +42,7 @@ const races = usePage().props.races;
             <Item :race="race"/>
         </SectionUI>
 
-        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Не доступные для игры</SectionUI>
+        <SectionUI class="text-center text-3xl font-semibold text-yellow-300 p-6">Недоступные для игры</SectionUI>
         <SectionUI class="p-6" v-for="race in races.notGame" :id="'show-' + race.id">
             <ResourceMenu :id="race.id" :routeName="'race.edit'"/>
             <Item :race="race"/>

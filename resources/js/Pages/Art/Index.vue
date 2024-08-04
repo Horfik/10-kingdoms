@@ -16,35 +16,35 @@ const arts = usePage().props.arts;
     <AuthenticatedLayout>
         <SectionUI class="p-6">
             <h1 class="text-2xl font-bold text-center text-yellow-300">Искусства</h1>
-            <div class="mt-2 text-2xl font-semibold text-yellow-300">Общая</div>
+            <div class="mt-2 text-2xl font-semibold text-yellow-300">Общие Искусства</div>
             <div class="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListArts :arts="arts.public"/>
             </div>
-            <div class="mt-2 text-2xl font-semibold text-yellow-300">Темная Магия</div>
+            <div class="mt-2 text-2xl font-semibold text-yellow-300">Темные Искусства</div>
             <div class="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListArts :arts="arts.dark" />
             </div>
-            <div class="mt-2 text-2xl font-semibold text-yellow-300">Магия фэйри</div>
+            <div class="mt-2 text-2xl font-semibold text-yellow-300">Искусства Фэйри</div>
             <div class="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-4">
                 <ListArts :arts="arts.fairy" />
             </div>
 
         </SectionUI>
 
-        <SectionUI class="p-6 text-center text-3xl italic font-semibold text-yellow-300">
-            Общая
+        <SectionUI class="p-6 text-center text-3xl font-semibold text-yellow-300">
+            Общие Искусства
         </SectionUI>
         <SectionUI v-for="art in arts.public" :id="'show-' + art.id" class="p-6 ">
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6 text-center text-3xl italic font-semibold text-yellow-300">
-            Темная Магия
+        <SectionUI class="p-6 text-center text-3xl font-semibold text-yellow-300">
+            Темные Искусства
         </SectionUI>
         <SectionUI v-for="art in arts.dark" :id="'show-' + art.id" class="p-6 ">
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6 text-center text-3xl italic font-semibold text-yellow-300">
-            Магия фэйри
+        <SectionUI class="p-6 text-center text-3xl font-semibold text-yellow-300">
+            Искусства Фэйри
         </SectionUI>
         <SectionUI v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6">
             <ArtItem :art="art" />
