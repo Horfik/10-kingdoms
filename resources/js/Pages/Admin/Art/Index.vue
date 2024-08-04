@@ -44,21 +44,21 @@ const arts = usePage().props.arts;
                 <ListArts :arts="arts.fairy" />
             </div>
         </SectionUI>
-        <SectionUI class="p-6">
+        <SectionUI class="p-6 text-center text-3xl font-semibold italic text-yellow-300 ">
             Общая
         </SectionUI>
         <SectionUI v-for="art in arts.public" :id="'show-' + art.id" class="p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6">
+        <SectionUI class="p-6 text-center text-3xl font-semibold italic text-yellow-300">
             Темная Магия
         </SectionUI>
         <SectionUI v-for="art in arts.dark" :id="'show-' + art.id" class="p-6">
             <ResourceMenu :id="art.id" :routeName="'art.edit'"/>
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6">
+        <SectionUI class="p-6 text-center text-3xl font-semibold italic text-yellow-300">
             Магия фэйри
         </SectionUI>
         <SectionUI v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6">

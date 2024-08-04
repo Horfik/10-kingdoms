@@ -31,19 +31,19 @@ const arts = usePage().props.arts;
 
         </SectionUI>
 
-        <SectionUI class="p-6">
+        <SectionUI class="p-6 text-center text-3xl italic font-semibold text-yellow-300">
             Общая
         </SectionUI>
         <SectionUI v-for="art in arts.public" :id="'show-' + art.id" class="p-6 ">
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6">
+        <SectionUI class="p-6 text-center text-3xl italic font-semibold text-yellow-300">
             Темная Магия
         </SectionUI>
         <SectionUI v-for="art in arts.dark" :id="'show-' + art.id" class="p-6 ">
             <ArtItem :art="art" />
         </SectionUI>
-        <SectionUI class="p-6 ">
+        <SectionUI class="p-6 text-center text-3xl italic font-semibold text-yellow-300">
             Магия фэйри
         </SectionUI>
         <SectionUI v-for="art in arts.fairy" :id="'show-' + art.id" class="p-6">
