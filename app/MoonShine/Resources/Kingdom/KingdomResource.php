@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\Kingdom;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Kingdom;
-use App\MoonShine\Resources\Kingdom\Pages\KingdomIndexPage;
-use App\MoonShine\Resources\Kingdom\Pages\KingdomFormPage;
 use App\MoonShine\Resources\Kingdom\Pages\KingdomDetailPage;
-
-use MoonShine\Laravel\Resources\ModelResource;
+use App\MoonShine\Resources\Kingdom\Pages\KingdomFormPage;
+use App\MoonShine\Resources\Kingdom\Pages\KingdomIndexPage;
 use MoonShine\Contracts\Core\PageContract;
+use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Support\Attributes\Icon;
 
 /**

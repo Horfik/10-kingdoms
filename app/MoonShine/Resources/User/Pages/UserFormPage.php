@@ -4,25 +4,24 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\User\Pages;
 
-use MoonShine\Laravel\Pages\Crud\FormPage;
-use MoonShine\Contracts\UI\ComponentContract;
-use MoonShine\Contracts\UI\FormBuilderContract;
-use MoonShine\UI\Components\FormBuilder;
-use MoonShine\Contracts\UI\FieldContract;
-use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use App\MoonShine\Resources\User\UserResource;
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FieldContract;
+use MoonShine\Contracts\UI\FormBuilderContract;
+use MoonShine\Laravel\Pages\Crud\FormPage;
 use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\FormBuilder;
+use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Components\Layout\Column;
 use MoonShine\UI\Components\Layout\Grid;
 use MoonShine\UI\Components\Layout\LineBreak;
 use MoonShine\UI\Fields\Email;
 use MoonShine\UI\Fields\ID;
-use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Password;
 use MoonShine\UI\Fields\PasswordRepeat;
 use MoonShine\UI\Fields\Text;
 use Throwable;
-
 
 /**
  * @extends FormPage<UserResource>
@@ -43,12 +42,12 @@ class UserFormPage extends FormPage
                         Email::make('E-mail', 'email'),
                     ]),
                     LineBreak::make(),
-                    Box::make('Change password',[
+                    Box::make('Change password', [
                         Password::make('Password')
                             ->customAttributes(['autocomplete' => 'new-password']),
-                        PasswordRepeat::make('Password repeat')->customAttributes(['autocompleate' => 'confirm-password'])
+                        PasswordRepeat::make('Password repeat')->customAttributes(['autocompleate' => 'confirm-password']),
                     ]),
-                ])
+                ]),
             ]),
         ];
     }
@@ -70,7 +69,6 @@ class UserFormPage extends FormPage
 
     /**
      * @param  FormBuilder  $component
-     *
      * @return FormBuilder
      */
     protected function modifyFormComponent(FormBuilderContract $component): FormBuilderContract
@@ -80,34 +78,37 @@ class UserFormPage extends FormPage
 
     /**
      * @return list<ComponentContract>
+     *
      * @throws Throwable
      */
     protected function topLayer(): array
     {
         return [
-            ...parent::topLayer()
+            ...parent::topLayer(),
         ];
     }
 
     /**
      * @return list<ComponentContract>
+     *
      * @throws Throwable
      */
     protected function mainLayer(): array
     {
         return [
-            ...parent::mainLayer()
+            ...parent::mainLayer(),
         ];
     }
 
     /**
      * @return list<ComponentContract>
+     *
      * @throws Throwable
      */
     protected function bottomLayer(): array
     {
         return [
-            ...parent::bottomLayer()
+            ...parent::bottomLayer(),
         ];
     }
 }

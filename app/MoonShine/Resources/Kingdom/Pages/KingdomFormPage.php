@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\Kingdom\Pages;
 
-use MoonShine\Laravel\Pages\Crud\FormPage;
+use App\MoonShine\Resources\Kingdom\KingdomResource;
+use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\UI\FormBuilderContract;
+use MoonShine\Laravel\Pages\Crud\FormPage;
+use MoonShine\Support\ListOf;
 use MoonShine\TinyMce\Fields\TinyMce;
 use MoonShine\UI\Components\FormBuilder;
-use MoonShine\Contracts\UI\FieldContract;
-use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
-use App\MoonShine\Resources\Kingdom\KingdomResource;
-use MoonShine\Support\ListOf;
-use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Components\Layout\Box;
+use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Fields\Text;
 use Throwable;
-
 
 /**
  * @extends FormPage<KingdomResource>
@@ -38,7 +37,7 @@ class KingdomFormPage extends FormPage
                 Text::make('Основное население', 'population'),
                 Text::make('Достопримечательности', 'attraction'),
                 Text::make('Герб', 'emblem'),
-                TinyMce::make('Описание','description')->locale('ru'),
+                TinyMce::make('Описание', 'description')->locale('ru'),
             ]),
         ];
     }
@@ -68,7 +67,6 @@ class KingdomFormPage extends FormPage
 
     /**
      * @param  FormBuilder  $component
-     *
      * @return FormBuilder
      */
     protected function modifyFormComponent(FormBuilderContract $component): FormBuilderContract
@@ -78,34 +76,37 @@ class KingdomFormPage extends FormPage
 
     /**
      * @return list<ComponentContract>
+     *
      * @throws Throwable
      */
     protected function topLayer(): array
     {
         return [
-            ...parent::topLayer()
+            ...parent::topLayer(),
         ];
     }
 
     /**
      * @return list<ComponentContract>
+     *
      * @throws Throwable
      */
     protected function mainLayer(): array
     {
         return [
-            ...parent::mainLayer()
+            ...parent::mainLayer(),
         ];
     }
 
     /**
      * @return list<ComponentContract>
+     *
      * @throws Throwable
      */
     protected function bottomLayer(): array
     {
         return [
-            ...parent::bottomLayer()
+            ...parent::bottomLayer(),
         ];
     }
 }
