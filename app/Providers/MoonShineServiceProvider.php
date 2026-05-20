@@ -7,6 +7,7 @@ namespace App\Providers;
 use App\MoonShine\Resources\Kingdom\KingdomResource;
 use App\MoonShine\Resources\MoonShineUser\MoonShineUserResource;
 use App\MoonShine\Resources\MoonShineUserRole\MoonShineUserRoleResource;
+use App\MoonShine\Resources\Organization\OrganizationResource;
 use App\MoonShine\Resources\User\UserResource;
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
@@ -25,6 +26,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonShineUserRoleResource::class,
                 UserResource::class,
                 KingdomResource::class,
+                OrganizationResource::class,
             ])
             ->pages([
                 ...$core->getConfig()->getPages(),

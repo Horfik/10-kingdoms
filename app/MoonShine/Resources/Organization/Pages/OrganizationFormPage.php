@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\MoonShine\Resources\Kingdom\Pages;
+namespace App\MoonShine\Resources\Organization\Pages;
 
-use App\MoonShine\Resources\Kingdom\KingdomResource;
+use App\Enums\OrganizationTypeEnum;
+use App\MoonShine\Resources\Organization\OrganizationResource;
+use Illuminate\Validation\Rule;
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FieldContract;
@@ -14,14 +16,15 @@ use MoonShine\Support\ListOf;
 use MoonShine\TinyMce\Fields\TinyMce;
 use MoonShine\UI\Components\FormBuilder;
 use MoonShine\UI\Components\Layout\Box;
-use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Checkbox;
+use MoonShine\UI\Fields\Enum;
 use MoonShine\UI\Fields\Text;
 use Throwable;
 
 /**
- * @extends FormPage<KingdomResource>
+ * @extends FormPage<OrganizationResource>
  */
-class KingdomFormPage extends FormPage
+class OrganizationFormPage extends FormPage
 {
     /**
      * @return list<ComponentContract|FieldContract>
@@ -30,14 +33,11 @@ class KingdomFormPage extends FormPage
     {
         return [
             Box::make([
-                ID::make(),
                 Text::make('Название', 'name'),
-                Text::make('Столица', 'capital'),
-                Text::make('Правитель', 'ruler'),
-                Text::make('Основное население', 'population'),
-                Text::make('Достопримечательности', 'attraction'),
-                Text::make('Герб', 'emblem'),
                 TinyMce::make('Описание', 'description')->locale('ru'),
+                Checkbox::make('Континент', 'is_continent'),
+                Checkbox::make('Фэйри', 'is_fairy'),
+                Enum::make('Тип', 'type')->attach(OrganizationTypeEnum::class),
             ]),
         ];
     }
@@ -54,14 +54,13 @@ class KingdomFormPage extends FormPage
 
     protected function rules(DataWrapperContract $item): array
     {
+        /** @phpstan-ignore-next-line  */
         return [
-            'name' => 'required|string|max:255',
-            'capital' => 'required|string|max:255',
-            'ruler' => 'required|string|max:255',
-            'population' => 'required|string|max:255',
-            'attraction' => 'required|string|max:255',
-            'emblem' => 'required|string|max:255',
-            'description' => 'required|string|max:5000',
+            'name' => 'string|required|max:255',
+            'description' => 'string|required|max:5000',
+            'is_continent' => 'required|boolean',
+            'is_fairy' => 'required|boolean',
+            'type' => ['required', Rule::enum(OrganizationTypeEnum::class)],
         ];
     }
 

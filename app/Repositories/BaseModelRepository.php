@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Classes\Filter;
 use App\Repositories\Interfaces\BaseModelRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -38,4 +39,6 @@ abstract class BaseModelRepository implements BaseModelRepositoryInterface
     }
 
     abstract protected function getQuery(): Builder;
+
+    abstract protected function getFilter(): Filter;
 }
