@@ -38,7 +38,15 @@ abstract class BaseModelRepository implements BaseModelRepositoryInterface
         return $this->getQuery()->find($id);
     }
 
+    public function getCollectionByFilter(array $filters): Collection
+    {
+        $filter = $this->getFilter($filters);
+
+        /** @phpstan-ignore-next-line  */
+        return $this->getQuery()->filter($filter)->get();
+    }
+
     abstract protected function getQuery(): Builder;
 
-    abstract protected function getFilter(): Filter;
+    abstract protected function getFilter(array $filter): Filter;
 }

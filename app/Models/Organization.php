@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\OrganizationTypeEnum;
+use App\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
@@ -18,6 +19,8 @@ use Illuminate\Support\Carbon;
  */
 class Organization extends Model
 {
+    use HasFilter;
+
     protected $fillable = [
         'name',
         'description',

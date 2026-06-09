@@ -10,10 +10,16 @@ abstract class Filter
     protected array $ignoreMethods = [
         'apply', 'fields',
     ];
+
+    protected Builder $builder;
+
+    protected array $orderFields = [];
+
     public function __construct(readonly protected array $filters) {}
 
     public function apply(Builder $query): Builder
     {
+        $this->builder = $query;
         foreach ($this->getFields() as $field => $value) {
             $method = Str::camel($field);
             if (str_starts_with($method, '__') || in_array($method, $this->ignoreMethods)) {
@@ -27,6 +33,8 @@ abstract class Filter
                 }
             }
         }
+
+        return $this->builder;
     }
 
     protected function getFields(): array
@@ -52,5 +60,18 @@ abstract class Filter
 
             return strlen($item) > 0;
         });
+    }
+
+    public function order(string $order): void
+    {
+        $direction = 'asc';
+        if (str_starts_with($order, '-')) {
+            $direction = 'desc';
+            $order = substr($order, 1);
+        }
+        if (! in_array($order, $this->orderFields)) {
+            return;
+        }
+        $this->builder->reorder($order, $direction);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services\Interfaces;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 interface BaseModelServiceInterface
 {
@@ -16,4 +17,6 @@ interface BaseModelServiceInterface
     public function delete(Model $model): bool;
 
     public function all(): Collection;
+
+    public function getCollection(Request $request): Collection;
 }

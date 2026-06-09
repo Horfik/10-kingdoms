@@ -26,6 +26,6 @@ class OrganizationController extends Controller
     )]
     public function index(Request $request): AnonymousResourceCollection
     {
-        return OrganizationResource::collection($this->service->all());
+        return OrganizationResource::collection($this->service->getCollection($request));
     }
 }
