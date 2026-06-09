@@ -10,7 +10,8 @@ abstract class Filter
     protected array $ignoreMethods = [
         'apply', 'fields',
     ];
-    public function __construct(readonly protected array $filters) {}
+
+    public function __construct(protected readonly array $filters) {}
 
     public function apply(Builder $query): Builder
     {

@@ -1,6 +1,7 @@
 <?php
 
 use App\MoonShine\Layouts\MoonShineLayout;
+use App\MoonShine\Pages\Dashboard;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -94,7 +95,7 @@ return [
     ],
 
     'pages' => [
-        'dashboard' => App\MoonShine\Pages\Dashboard::class,
+        'dashboard' => Dashboard::class,
         'profile' => ProfilePage::class,
         'login' => LoginPage::class,
         'error' => ErrorPage::class,

@@ -40,5 +40,5 @@ abstract class BaseModelRepository implements BaseModelRepositoryInterface
 
     abstract protected function getQuery(): Builder;
 
-    abstract protected function getFilter(): Filter;
+    // abstract protected function getFilter(): Filter;
 }

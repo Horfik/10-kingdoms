@@ -6,7 +6,6 @@ use App\Classes\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-
 trait HasFilter
 {
     public function scopeFilter(Builder $builder, Filter $filter): Builder
@@ -14,7 +13,7 @@ trait HasFilter
         return $filter->apply($builder);
     }
 
-    public function scopeGetPaginate(Builder $builder, int $perPage = null, $page = null): LengthAwarePaginator
+    public function scopeGetPaginate(Builder $builder, ?int $perPage = null, $page = null): LengthAwarePaginator
     {
         return $builder->paginate($perPage, ['*'], 'page', $page);
     }

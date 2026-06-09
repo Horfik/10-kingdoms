@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\MoonShine\Resources\Art\ArtResource;
 use App\MoonShine\Resources\Kingdom\KingdomResource;
 use App\MoonShine\Resources\MoonShineUser\MoonShineUserResource;
 use App\MoonShine\Resources\MoonShineUserRole\MoonShineUserRoleResource;
@@ -27,6 +28,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 UserResource::class,
                 KingdomResource::class,
                 OrganizationResource::class,
+                ArtResource::class,
             ])
             ->pages([
                 ...$core->getConfig()->getPages(),

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Layouts;
 
+use App\MoonShine\Resources\Art\ArtResource;
 use App\MoonShine\Resources\Kingdom\KingdomResource;
 use App\MoonShine\Resources\Organization\OrganizationResource;
 use App\MoonShine\Resources\User\UserResource;
@@ -35,6 +36,7 @@ final class MoonShineLayout extends AppLayout
             MenuItem::make(UserResource::class, 'Пользователи'),
             MenuItem::make(KingdomResource::class, 'Королевства'),
             MenuItem::make(OrganizationResource::class, 'Организации'),
+            MenuItem::make(ArtResource::class, 'Искусства'),
         ];
     }
 

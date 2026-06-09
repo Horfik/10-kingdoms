@@ -26,9 +26,9 @@ function getResult(int $difficult, int $dices): array
 
 function getWeightedRandom() {
     $weights = [
-        1 => 5,
-        2 => 5,
-        3 => 5,
+        1 => 10,
+        2 => 10,
+        3 => 10,
         4 => 10,
         5 => 15,
         6 => 20,
@@ -55,7 +55,7 @@ function getResultNew(int $difficult, int $dices): array
     $results = [];
     for ($i = 0; $i < 10000; $i++) {
         $success = 0;
-        if (mt_rand(0, 200) !== 0) {
+        if (mt_rand(0, 200) !== -1) {
             for ($d = 0; $d < $dices; $d++) {
                 $result = getWeightedRandom();
                 if ($result >= $difficult) {
