@@ -16,4 +16,6 @@ interface BaseModelRepositoryInterface
     public function delete(Model $model): bool;
 
     public function all(): Collection;
+
+    public function getCollectionByFilter(array $filters): Collection;
 }

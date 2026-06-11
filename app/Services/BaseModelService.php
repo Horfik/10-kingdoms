@@ -6,6 +6,7 @@ use App\Repositories\Interfaces\BaseModelRepositoryInterface;
 use App\Services\Interfaces\BaseModelServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class BaseModelService implements BaseModelServiceInterface
 {
@@ -34,5 +35,12 @@ class BaseModelService implements BaseModelServiceInterface
     public function all(): Collection
     {
         return $this->repository->all();
+    }
+
+    public function getCollection(Request $request): Collection
+    {
+        $filters = $request->all();
+
+        return $this->repository->getCollectionByFilter($filters);
     }
 }
