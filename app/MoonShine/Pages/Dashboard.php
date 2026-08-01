@@ -34,7 +34,6 @@ class Dashboard extends Page
     protected function components(): iterable
     {
         return [
-            Textarea::make('Test'),
         ];
     }
 }

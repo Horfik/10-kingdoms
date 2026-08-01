@@ -13,6 +13,8 @@ use App\MoonShine\Resources\User\UserResource;
 use Illuminate\Support\ServiceProvider;
 use MoonShine\Contracts\Core\DependencyInjection\CoreContract;
 use MoonShine\Laravel\DependencyInjection\MoonShineConfigurator;
+use App\MoonShine\Resources\Race\RaceResource;
+use App\MoonShine\Resources\Mechanic\MechanicResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,8 @@ class MoonShineServiceProvider extends ServiceProvider
                 KingdomResource::class,
                 OrganizationResource::class,
                 ArtResource::class,
+                RaceResource::class,
+                MechanicResource::class,
             ])
             ->pages([
                 ...$core->getConfig()->getPages(),

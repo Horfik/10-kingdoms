@@ -22,6 +22,8 @@ class OrganizationResource extends ModelResource
 
     protected string $title = 'Организации';
 
+    protected string $column = 'name';
+
     /**
      * @return list<class-string<PageContract>>
      */

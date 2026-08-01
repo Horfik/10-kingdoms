@@ -22,6 +22,8 @@ class ArtResource extends ModelResource
 
     protected string $title = 'Art';
 
+    protected string $column = 'title';
+
     /**
      * @return list<class-string<PageContract>>
      */

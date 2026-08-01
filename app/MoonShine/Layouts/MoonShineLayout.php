@@ -14,6 +14,8 @@ use MoonShine\Contracts\ColorManager\ColorManagerContract;
 use MoonShine\Contracts\ColorManager\PaletteContract;
 use MoonShine\Laravel\Layouts\AppLayout;
 use MoonShine\MenuManager\MenuItem;
+use App\MoonShine\Resources\Race\RaceResource;
+use App\MoonShine\Resources\Mechanic\MechanicResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -37,6 +39,8 @@ final class MoonShineLayout extends AppLayout
             MenuItem::make(KingdomResource::class, 'Королевства'),
             MenuItem::make(OrganizationResource::class, 'Организации'),
             MenuItem::make(ArtResource::class, 'Искусства'),
+            MenuItem::make(RaceResource::class, 'Народы'),
+            MenuItem::make(MechanicResource::class, 'Механики'),
         ];
     }
 
