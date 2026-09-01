@@ -3,11 +3,10 @@
 </script>
 
 <template>
-    <div>
-        <h1>Hello world</h1>
+    <div class="font-bold underline">
+        <h1>Hello world 52</h1>
     </div>
 </template>
 
 <style scoped>
-
 </style>

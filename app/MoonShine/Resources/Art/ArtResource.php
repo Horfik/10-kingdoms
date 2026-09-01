@@ -20,7 +20,7 @@ class ArtResource extends ModelResource
 {
     protected string $model = Art::class;
 
-    protected string $title = 'Art';
+    protected string $title = 'Искусства';
 
     protected string $column = 'title';
 

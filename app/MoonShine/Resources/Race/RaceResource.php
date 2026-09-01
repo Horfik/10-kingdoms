@@ -22,7 +22,7 @@ class RaceResource extends ModelResource
 {
     protected string $model = Race::class;
 
-    protected string $title = 'Races';
+    protected string $title = 'Расы';
 
     protected string $column = 'title';
 

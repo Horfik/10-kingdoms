@@ -21,7 +21,9 @@
     </head>
     <body>
         <div id="app">
+            <v-app>
 
+            </v-app>
         </div>
     </body>
 </html>
