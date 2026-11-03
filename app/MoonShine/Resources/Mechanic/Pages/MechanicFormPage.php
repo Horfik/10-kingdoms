@@ -13,9 +13,12 @@ use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use App\MoonShine\Resources\Mechanic\MechanicResource;
 use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\Layout\Column;
+use MoonShine\UI\Components\Layout\Grid;
 use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Components\Layout\Box;
+use MoonShine\UI\Fields\Number;
 use MoonShine\UI\Fields\Text;
 use Throwable;
 
@@ -35,8 +38,20 @@ class MechanicFormPage extends FormPage
                 ID::make(),
                 Text::make('Название', 'title'),
                 TinyMce::make('Описание', 'description'),
-                Checkbox::make('Континент', 'is_continent'),
-                Checkbox::make('Фэйри', 'is_fairy'),
+                Grid::make([
+                    Column::make([
+                        Checkbox::make('Континент', 'is_continent'),
+                        Number::make('Континент порядок', 'continent_order')->min(0)->default(0),
+                    ])
+                        ->columnSpan(6),
+
+                    Column::make([
+                        Checkbox::make('Фэйри', 'is_fairy'),
+                        Number::make('Фэйри порядок', 'fairy_order')->min(0)->default(0),
+                    ])
+                        ->columnSpan(6)
+                ])
+
             ]),
         ];
     }
@@ -58,6 +73,8 @@ class MechanicFormPage extends FormPage
             'description' => 'required|string|max:6000',
             'is_continent' => 'required|boolean',
             'is_fairy' => 'required|boolean',
+            'fairy_order' => 'required|integer|min:0',
+            'continent_order' => 'required|integer|min:0',
         ];
     }
 

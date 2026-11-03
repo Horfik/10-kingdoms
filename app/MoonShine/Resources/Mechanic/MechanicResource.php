@@ -8,9 +8,13 @@ use App\Models\Mechanic;
 use App\MoonShine\Resources\Mechanic\Pages\MechanicIndexPage;
 use App\MoonShine\Resources\Mechanic\Pages\MechanicFormPage;
 use App\MoonShine\Resources\Mechanic\Pages\MechanicDetailPage;
+use App\MoonShine\Resources\Mechanic\Pages\MechanicOrderPage;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Contracts\Core\PageContract;
+use MoonShine\Support\AlpineJs;
 use MoonShine\Support\Attributes\Icon;
+use MoonShine\Support\Enums\JsEvent;
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Fields\Checkbox;
 
 /**
@@ -46,4 +50,6 @@ class MechanicResource extends ModelResource
             Checkbox::make('Фэйри', 'is_fairy'),
         ];
     }
+
+
 }

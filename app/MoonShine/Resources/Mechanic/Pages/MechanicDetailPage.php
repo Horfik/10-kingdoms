@@ -10,7 +10,9 @@ use MoonShine\UI\Components\Table\TableBuilder;
 use MoonShine\Contracts\UI\FieldContract;
 use App\MoonShine\Resources\Mechanic\MechanicResource;
 use MoonShine\Support\ListOf;
+use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\ID;
+use MoonShine\UI\Fields\Number;
 use Throwable;
 
 
@@ -26,6 +28,10 @@ class MechanicDetailPage extends DetailPage
     {
         return [
             ID::make(),
+            Checkbox::make('Континент', 'is_continent'),
+            Checkbox::make('Фэйри', 'is_fairy'),
+            Number::make('Континент', 'continent_order')->sortable(),
+            Number::make('Фэйри', 'fairy_order')->sortable(),
         ];
     }
 

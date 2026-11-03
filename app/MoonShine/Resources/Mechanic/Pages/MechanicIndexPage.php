@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\Mechanic\Pages;
 
+use App\MoonShine\Resources\Mechanic\MechanicResource;
 use MoonShine\Contracts\UI\ActionButtonContract;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\UI\LayoutContract;
 use MoonShine\Laravel\Pages\Crud\IndexPage;
-use MoonShine\Contracts\UI\ComponentContract;
-use MoonShine\UI\Components\ActionButton;
-use MoonShine\UI\Components\Table\TableBuilder;
-use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Laravel\QueryTags\QueryTag;
+use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\Metrics\Wrapped\Metric;
+use MoonShine\UI\Components\Table\TableBuilder;
 use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\ID;
-use App\MoonShine\Resources\Mechanic\MechanicResource;
-use MoonShine\Support\ListOf;
 use MoonShine\UI\Fields\Number;
 use Throwable;
 
@@ -51,11 +50,7 @@ class MechanicIndexPage extends IndexPage
      */
     protected function buttons(): ListOf
     {
-        $buttons = parent::buttons();
-
-        $buttons->add(ActionButton::make('test', '#' )->toggleModal(''));
-
-        return $buttons;
+        return parent::buttons();
     }
 
     /**
