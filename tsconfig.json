@@ -11,7 +11,7 @@
         "lib": ["ESNext", "DOM"],
         "baseUrl": ".",
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["resources/*"]
         }
     },
     "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx"]
