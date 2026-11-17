@@ -14,7 +14,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '  <dt>Focus the notification</dt>\n' +
   '  <dd>Windows or Linux: Alt+F12</dd>\n' +
   '  <dd>macOS: &#x2325;F12</dd>\n' +
-  '  <dt>Focus a contextual toolbar</dt>\n' +
+  '  <dt>Focus a contextual Toolbar</dt>\n' +
   '  <dd>Windows, Linux or macOS: Ctrl+F9</dd>\n' +
   '</dl>\n' +
   '\n' +
@@ -31,7 +31,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '\n' +
   '<ol>\n' +
   '  <li>Menu bar</li>\n' +
-  '  <li>Each toolbar group</li>\n' +
+  '  <li>Each Toolbar group</li>\n' +
   '  <li>Sidebar</li>\n' +
   '  <li>Element path in the footer</li>\n' +
   '  <li>Word count toggle button in the footer</li>\n' +
@@ -42,7 +42,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '<p>If a UI section is not present, it is skipped.</p>\n' +
   '\n' +
   '<p>If the footer has keyboard navigation focus, and there is no visible sidebar, pressing <strong>Shift+Tab</strong>\n' +
-  '  moves focus to the first toolbar group, not the last.</p>\n' +
+  '  moves focus to the first Toolbar group, not the last.</p>\n' +
   '\n' +
   '<h1>Navigate within UI sections</h1>\n' +
   '\n' +
@@ -53,7 +53,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '<ul>\n' +
   '  <li>move between menus in the menu bar.</li>\n' +
   '  <li>open a sub-menu in a menu.</li>\n' +
-  '  <li>move between buttons in a toolbar group.</li>\n' +
+  '  <li>move between buttons in a Toolbar group.</li>\n' +
   '  <li>move between items in the footer’s element path.</li>\n' +
   '</ul>\n' +
   '\n' +
@@ -61,7 +61,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '\n' +
   '<ul>\n' +
   '  <li>move between menu items in a menu.</li>\n' +
-  '  <li>move between items in a toolbar pop-up menu.</li>\n' +
+  '  <li>move between items in a Toolbar pop-up menu.</li>\n' +
   '</ul>\n' +
   '\n' +
   '<p><strong>Arrow</strong> keys cycle within the focused UI section.</p>\n' +
@@ -71,9 +71,9 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '<p>If the current focus is at the ‘top’ of a particular UI section, pressing the <strong>Esc</strong> key also exits\n' +
   '  keyboard navigation entirely.</p>\n' +
   '\n' +
-  '<h1>Execute a menu item or toolbar button</h1>\n' +
+  '<h1>Execute a menu item or Toolbar button</h1>\n' +
   '\n' +
-  '<p>When the desired menu item or toolbar button is highlighted, press <strong>Return</strong>, <strong>Enter</strong>,\n' +
+  '<p>When the desired menu item or Toolbar button is highlighted, press <strong>Return</strong>, <strong>Enter</strong>,\n' +
   '  or the <strong>Space bar</strong> to execute the item.</p>\n' +
   '\n' +
   '<h1>Navigate non-tabbed dialogs</h1>\n' +
