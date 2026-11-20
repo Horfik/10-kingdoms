@@ -13,6 +13,8 @@ use MoonShine\UI\Fields\Textarea;
 
 class Dashboard extends Page
 {
+
+
     /**
      * @return array<string, string>
      */
@@ -34,6 +36,7 @@ class Dashboard extends Page
     protected function components(): iterable
     {
         return [
+
         ];
     }
 }

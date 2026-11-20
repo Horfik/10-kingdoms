@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ArtTypeEnum;
 use App\Observers\ArtObserver;
+use App\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,6 +34,10 @@ use Illuminate\Database\Eloquent\Model;
 #[ObservedBy(ArtObserver::class)]
 class Art extends Model
 {
+    use HasFilter;
+
+    protected $table = 'arts';
+
     protected $fillable = [
         'title',
         'slug',

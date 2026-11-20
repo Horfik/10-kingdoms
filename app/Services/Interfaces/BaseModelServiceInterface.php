@@ -2,9 +2,10 @@
 
 namespace App\Services\Interfaces;
 
+use App\Classes\Filter;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface BaseModelServiceInterface
 {
@@ -18,5 +19,5 @@ interface BaseModelServiceInterface
 
     public function all(): Collection;
 
-    public function getCollection(Request $request): Collection;
+    public function find(Filter $filter, bool $paginate = true, ?int $page = null): LengthAwarePaginator|Collection;
 }

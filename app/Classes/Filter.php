@@ -15,6 +15,8 @@ abstract class Filter
 
     protected array $orderFields = [];
 
+    protected array $appliedFilters = [];
+
     public function __construct(readonly protected array $filters) {}
 
     public function apply(Builder $query): Builder

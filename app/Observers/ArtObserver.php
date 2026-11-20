@@ -27,9 +27,14 @@ class ArtObserver
 
     public function getSlug(string $title, int $i = 0): string
     {
-        $slug = Str::slug($title.$i > 0 ? '-'.$i : '');
+        if ($i === 0) {
+            $slug = Str::slug($title);
+        } else {
+            $slug = Str::slug($title).'-'.$i;
+        }
+
         if ($this->service->getBySlug($slug)) {
-            $slug = $this->getSlug($title, $i++);
+            $slug = $this->getSlug($title, ++$i);
         }
 
         return $slug;

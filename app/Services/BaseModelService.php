@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
+use App\Classes\Filter;
 use App\Repositories\Interfaces\BaseModelRepositoryInterface;
 use App\Services\Interfaces\BaseModelServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BaseModelService implements BaseModelServiceInterface
 {
-    protected BaseModelRepositoryInterface $repository;
+    protected $repository;
 
     public function getById(int $id): ?Model
     {
@@ -37,10 +38,8 @@ class BaseModelService implements BaseModelServiceInterface
         return $this->repository->all();
     }
 
-    public function getCollection(Request $request): Collection
+    public function find(Filter $filter, bool $paginate = true, ?int $page = null): LengthAwarePaginator|Collection
     {
-        $filters = $request->all();
-
-        return $this->repository->getCollectionByFilter($filters);
+        return $this->repository->find($filter, $paginate, $page);
     }
 }

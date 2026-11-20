@@ -7,6 +7,7 @@ use App\Repositories\Interfaces\BaseModelRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 abstract class BaseModelRepository implements BaseModelRepositoryInterface
 {
@@ -38,15 +39,13 @@ abstract class BaseModelRepository implements BaseModelRepositoryInterface
         return $this->getQuery()->find($id);
     }
 
-    public function getCollectionByFilter(array $filters): Collection
+    public function find(Filter $filter, bool $paginate = true, ?int $page = null): LengthAwarePaginator|Collection
     {
-        $filter = $this->getFilter($filters);
-
         /** @phpstan-ignore-next-line  */
-        return $this->getQuery()->filter($filter)->get();
+        $req = $this->getQuery()->filter($filter);
+
+        return $paginate ? $req->getPaginate(20, $page) : $req->get();
     }
 
     abstract protected function getQuery(): Builder;
-
-    abstract protected function getFilter(array $filter): Filter;
 }
